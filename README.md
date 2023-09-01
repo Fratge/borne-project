@@ -10,3 +10,5 @@ npm install
 LANCER LE LIVE SERVER
 
 npm run css
+
+jé comit
