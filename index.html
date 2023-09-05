@@ -3,17 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./src/js/data.js"></script>
+    <script src="./src/js/main.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <link rel="stylesheet" href="./src/css/output.css">
     <title>Cinéma La bande d'annonce</title>
 </head>
-<body>
-    <div x-data="{ open: true }">
-        <div x-data="{ label: 'Content:' }">
-            <span x-text="label"></span>
-            <span x-show="open"></span>
-        </div>
+<body x-data="app()">
+    <div class="flex flex-wrap">
+        <template x-for="film in filmsList">
+            <div class="w-96 bg-slate-400 p-5 border border-red-500"  x-on:click="redirectFilmDetails(film)">
+                <h2 x-text="film.filmName"></h2>
+                <img :src="film.filmImage" alt="" class="h-56">
+                <p x-text="film.price + ' €'"></p>
+            </div>
+        </template>
     </div>
-    <script src="./src/js/test.js"></script>
 </body>
 </html>
