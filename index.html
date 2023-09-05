@@ -8,5 +8,12 @@
     <title>Cinéma La bande d'annonce</title>
 </head>
 <body>
+    <div x-data="{ open: true }">
+        <div x-data="{ label: 'Content:' }">
+            <span x-text="label"></span>
+            <span x-show="open"></span>
+        </div>
+    </div>
+    <script src="./src/js/test.js"></script>
 </body>
 </html>
