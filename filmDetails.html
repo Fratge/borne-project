@@ -3,9 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="./src/css/output.css">
+    <script src="./src/js/data.js"></script>
+    <script src="./src/js/main.js"></script>
+    <title>Détails du film</title>
 </head>
-<body x-data="app()">
+<body>
+    <a href="index.html" class="bg-blue-400">retour</a>
+    <div>
+        <h2 id="filmId"></h2>
+        <p id="filmName"></p>
+        <img id="filmImage" alt="" class="h-56">
+        <p id="filmPrice"></p>
+    </div>
+    <script src="./src/js/filmDetails.js"></script>
     
 </body>
 </html>

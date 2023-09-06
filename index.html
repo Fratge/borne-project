@@ -12,7 +12,7 @@
 <body x-data="app()">
     <div class="flex flex-wrap">
         <template x-for="film in filmsList">
-            <div class="w-96 bg-slate-400 p-5 border border-red-500"  x-on:click="redirectFilmDetails(film)">
+            <div class="w-96 bg-slate-400 p-5 border border-red-500" x-on:click="redirectToFilmDetails(film)">
                 <h2 x-text="film.filmName"></h2>
                 <img :src="film.filmImage" alt="" class="h-56">
                 <p x-text="film.price + ' €'"></p>

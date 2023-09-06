@@ -3,9 +3,9 @@ const app = () => {
         filmsList: filmsList,
         snacksList: snacksList,
 
-        redirectFilmDetails(film){
-            const filmDetailsUrl = '/filmDetails?id=' + film.id; 
-            window.location.href = filmDetailsUrl;
+        redirectToFilmDetails(film){
+            localStorage.setItem('selectedFilm', JSON.stringify(film));
+            window.location.href = 'filmDetails.html';
         }
     }
 }
