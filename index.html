@@ -5,12 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="./src/js/data.js"></script>
     <script src="./src/js/main.js"></script>
-    <script src="./src/js/panier.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <link rel="stylesheet" href="./src/css/output.css">
     <title>Cinéma La bande d'annonce</title>
 </head>
-<body x-data="app(); panier()">
+<body x-data="app()">
     <div class="flex flex-wrap">
         <template x-for="film in filmsList">
             <div class="w-96 bg-slate-400 p-5 border border-red-500" x-on:click="redirectToFilmDetails(film)">
@@ -25,10 +24,22 @@
      
         <div x-show="open">
             <p>Contenu du panier:</p>
-            <template x-for="item in panier">
-                <li x-text="item"></li>
+            <template x-for="item in panierUser">
+                <div>
+                    <p>
+                        <template x-if="isMany(item) > 1">
+                            <span x-text="isMany(item) + 'x'"></span>
+                        </template>
+                        <span x-text="item.filmName"></span>
+                        <span x-text="item.quantity + 'x'"></span>
+                    </p>
+                    <p x-text="item.price"></p>
+                    <button x-on:click="removeFromPanier(item)" class="bg-red-500 px-3 rounded-lg text-white">Supprimer</button>
+                </div>
             </template>
+            <p>Total panier: <span x-text="calculateTotal()"></span> €</p>
         </div>
+        
     </div>
 </body>
 </html>
