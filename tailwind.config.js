@@ -3,7 +3,13 @@
 module.exports = {
   content: ["./src/**/*.{html,js}", "./*.{html,js}"],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        sans:[
+            'Dosis, sans-serif',
+        ]
+    },
+    },
   },
   plugins: [],
 }
