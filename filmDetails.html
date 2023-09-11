@@ -15,17 +15,32 @@
         <h2 id="filmId"></h2>
         <p id="filmName"></p>
         <img id="filmImage" alt="" class="h-56">
-        <p id="filmPrice"></p>
+        <div class="flex gap-5">
+            <p id="filmPriceAdulte"></p>
+            <div class="flex bg-lime-500">
+                <button id="plusButtonAdulte" @click="adulteQuantity++">+</button>
+                <p id="inputValueAdulte">0</p>
+                <button id="minusButtonAdulte" @click="adulteQuantity > 0 ? adulteQuantity-- : ''">-</button>
+            </div>
+        </div>
+        <div class="flex gap-5">
+            <p id="filmPriceEtudiant"></p>
+            <div class="flex bg-lime-500">
+                <button id="plusButtonEtudiant" @click="etudiantQuantity++">+</button>
+                <p id="inputValueEtudiant">0</p>
+                <button id="minusButtonEtudiant" @click="etudiantQuantity > 0 ? etudiantQuantity-- : ''">-</button>
+            </div>
+        </div>
+        <div class="flex gap-5">
+            <p id="filmPriceEnfant"></p>
+            <div class="flex bg-lime-500">
+                <button id="plusButtonEnfant" @click="enfantQuantity++">+</button>
+                <p id="inputValueEnfant">0</p>
+                <button id="minusButtonEnfant" @click="enfantQuantity > 0 ? enfantQuantity-- : ''">-</button>
+            </div>
+        </div>
     </div>
-
-    <div>
-        <button id="plusButton" @click="quantity++">+</button>
-        <p id="inputValue">1</p>
-        <button id="minusButton" @click="quantity > 1 ? quantity-- : ''">-</button>
-    </div>
-    
-    <button class="bg-yellow-300 px-4 rounded-lg" @click="addToPanier">Ajouter au panier</button>
-
+    <button class="bg-yellow-300 px-4 rounded-lg" @click="addToPanier">Réserver</button>
     <div x-data="{ open: false }">
         <button x-on:click="open = ! open" class="bg-red-500 px-5 rounded-lg text-white mt-24">Panier</button>
      
@@ -39,6 +54,8 @@
                 </div>
             </template>
         </div>
+        <p>Total panier: <span x-text="calculateTotal()"></span> €</p>
+
     </div>
     <script src="./src/js/filmDetails.js"></script>
 </body>
