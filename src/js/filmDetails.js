@@ -72,7 +72,19 @@ minusButtonEnfant.addEventListener("click", function() {
   }
 });
 
+// Snacks
+const reserverButton = document.getElementById("reserver");
+const snacksContainer = document.getElementById("snacksContainer");
 
+reserverButton.addEventListener('click', function(){
+  inputValueAdulte.textContent = "0";
+  inputValueEnfant.textContent = "0";
+  inputValueEtudiant.textContent = "0";
 
+  snacksContainer.classList.remove('hidden');
+});
 
+const plusButton = document.querySelectorAll('.plusButton');
+const minusButton = document.querySelectorAll('.minusButton');
+const inputValue = document.querySelectorAll('.inputValue');
 

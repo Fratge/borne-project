@@ -55,29 +55,24 @@ const snacksList = [
         snackName: "Cola",
         smallFormat: 5,
         largeFormat: 7,
-        snackImage: "./src/img/snacks/Cola.jpeg"
+        snackImage: "./src/img/snacks/Cola.jpeg",
+        largeBool: false
     },
     {
         id: 2,
         snackName: "Jus",
         smallFormat: 3,
         largeFormat: 5,
-        snackImage: "./src/img/snacks/jus-fruits-tropicana.png"
+        snackImage: "./src/img/snacks/jus-fruits-tropicana.png",
+        largeBool: false
     },
     {
         id: 3,
         snackName: "Pop Corn",
         smallFormat: 7,
         largeFormat: 10,
-        snackImage: "./src/img/snacks/popcorn.jpeg"
+        snackImage: "./src/img/snacks/popcorn.jpg",
+        largeBool: false
     },
-    {
-        id: 4,
-        snackName: "Eau",
-        smallFormat: 7,
-        largeFormat: 10,
-        snackImage: "./src/img/snacks/eau.jpeg"
-    },
-    
 ]
 

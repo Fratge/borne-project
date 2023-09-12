@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,31 +15,40 @@
             <div class="w-96 bg-slate-400 p-5 border border-red-500" x-on:click="redirectToFilmDetails(film)">
                 <h2 x-text="film.filmName"></h2>
                 <img :src="film.filmImage" alt="" class="h-56">
-                <p x-text="film.price + ' €'"></p>
+                <p x-text="film.adultePrice + ' €'"></p>
             </div>
         </template>
     </div>
     <div x-data="{ open: false }">
         <button x-on:click="open = ! open" class="bg-red-500 px-5 rounded-lg text-white mt-24">Panier</button>
-     
+        
         <div x-show="open">
             <p>Contenu du panier:</p>
-            <template x-for="item in panierUser">
+            <template x-for="(item, index) in panierUser">
                 <div>
-                    <p>
-                        <template x-if="isMany(item) > 1">
-                            <span x-text="isMany(item) + 'x'"></span>
-                        </template>
-                        <span x-text="item.filmName"></span>
-                        <span x-text="item.quantity + 'x'"></span>
-                    </p>
-                    <p x-text="item.price"></p>
-                    <button x-on:click="removeFromPanier(item)" class="bg-red-500 px-3 rounded-lg text-white">Supprimer</button>
+                    <template x-if="item.adulteQuantity > 0">
+                        <p>
+                            <span x-text="'Film : ' + item.filmName + ' Adulte x' + item.adulteQuantity + ' ' + (item.adulteQuantity * getFilmPrice(item.filmName, 'adultePrice')) + '€'"></span>
+                            <button x-on:click="resetQuantity(item, 'adulteQuantity')" class="bg-red-500 px-3 rounded-lg text-white">Supprimer</button>
+                        </p>
+                    </template>
+                    <template x-if="item.etudiantQuantity > 0">
+                        <p>
+                            <span x-text="'Film : ' + item.filmName + ' Etudiant x' + item.etudiantQuantity + ' ' + (item.etudiantQuantity * getFilmPrice(item.filmName, 'etudiantPrice')) + '€'"></span>
+                            <button x-on:click="resetQuantity(item, 'etudiantQuantity')" class="bg-red-500 px-3 rounded-lg text-white">Supprimer</button>
+                        </p>
+                    </template>
+                    <template x-if="item.enfantQuantity > 0">
+                        <p>
+                            <span x-text="'Film : ' + item.filmName + ' Enfant x' + item.enfantQuantity + ' ' + (item.enfantQuantity * getFilmPrice(item.filmName, 'enfantPrice')) + '€'"></span>
+                            <button x-on:click="resetQuantity(item, 'enfantQuantity')" class="bg-red-500 px-3 rounded-lg text-white">Supprimer</button>
+                        </p>
+                    </template>
                 </div>
             </template>
-            <p>Total panier: <span x-text="calculateTotal()"></span> €</p>
         </div>
-        
+        <p>Total panier: <span x-text="calculateTotal()"></span> €</p>
+
     </div>
 </body>
 </html>

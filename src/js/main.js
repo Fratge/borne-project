@@ -7,14 +7,16 @@ const app = () => {
         adulteQuantity: 0, 
         etudiantQuantity: 0, 
         enfantQuantity: 0, 
+        
+        panierUser: initialPanier,
+        selectedFilm: JSON.parse(localStorage.getItem('selectedFilm')),
+
 
         redirectToFilmDetails(film){
             localStorage.setItem('selectedFilm', JSON.stringify(film));
             window.location.href = 'filmDetails.html';
         },
 
-        panierUser: initialPanier,
-        selectedFilm: JSON.parse(localStorage.getItem('selectedFilm')),
 
         addToPanier() {
             const existingItemIndex = this.panierUser.findIndex(item => item.filmName === this.selectedFilm.filmName);
@@ -37,8 +39,8 @@ const app = () => {
         },
         
 
-        removeFromPanier(item) {
-            this.panierUser.splice(item, 1);
+        resetQuantity(item, quantityType) {
+            item[quantityType] = 0;
             this.setPanierUser();
         },
 
@@ -50,12 +52,10 @@ const app = () => {
         calculateTotal() {
             let total = 0;
         
-            // Parcourir le panier de l'utilisateur
             for (const item of this.panierUser) {
                 const film = this.filmsList.find(f => f.filmName === item.filmName);
         
                 if (film) {
-                    // Ajouter le prix du film multiplié par la quantité adulteQuantity
                     total += (film.adultePrice * item.adulteQuantity) +
                              (film.etudiantPrice * item.etudiantQuantity) +
                              (film.enfantPrice * item.enfantQuantity);
@@ -63,12 +63,19 @@ const app = () => {
             }
             return total.toFixed(2) + ' €';
         },
-        
 
-        isMany(item){
-            const filmName = item.filmName;
-            const count = this.panierUser.filter(item => item.filmName === filmName).length;
-            return count;
-        }
+        getFilmPrice(filmName, priceType) {
+            const film = this.filmsList.find(f => f.filmName === filmName);
+            if (film) {
+                return film[priceType];
+            }
+            return 0;
+        },
+
+        background(snack){
+            snack.largeBool = !snack.largeBool;
+        },
+
+
     }
 }
