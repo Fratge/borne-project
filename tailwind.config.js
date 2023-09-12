@@ -1,7 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 
 module.exports = {
-  content: ["./src/**/*.{html,js}", "./*.{html,js}"],
+  content: ["./src/**/*.{html,js,css}", 
+            "./*.{html,js,css}",
+            "./src/css/*.css"],
   theme: {
     extend: {
       fontFamily: {
@@ -28,6 +30,16 @@ module.exports = {
         extrabold: '800',
         black: '900',
     },
+      colors:{
+        'blanc':'#EBE4B7',
+        'noir':'#082431',
+        'rose':'#E7364F',
+        'rose_fonce':'#280207',
+        'vert':'#81B26B',
+        'vert_fonce':'#0E2802',
+        'jaune':'#FDC835',
+        'jaune_fonce':'#372F16',
+      }
     },
   },
   plugins: [],
