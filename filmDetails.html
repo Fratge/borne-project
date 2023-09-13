@@ -88,13 +88,16 @@
                         </p>
                     </template>
                     <template x-if="item.snackName && item.snackQuantity > 0">
-                        <span x-text="'snack : ' + item.snackName + ' x' + item.snackQuantity + (item.largeBool ? ' Grand format ' : ' Petit format ') + (item.snackQuantity * item.snackPrice) + '€'"></span>
+                        <p>
+                            <span x-text="'snack : ' + item.snackName + ' x' + item.snackQuantity + (item.largeBool ? ' Grand format ' : ' Petit format ') + (item.snackQuantity * item.snackPrice) + '€'"></span>
+                            <button x-on:click="resetQuantity(item, 'snackQuantity')" class="bg-red-500 px-3 rounded-lg text-white">Supprimer</button>
+                        </p>
                     </template>
                 </div>
             </template>
         </div>
         <p>Total panier: <span x-text="calculateTotal()"></span> </p>
-
+        <a href="panier.html">Voir la panier (juste pour aller sur la page)</a>
     </div>
     <script src="./src/js/filmDetails.js"></script>
 </body>

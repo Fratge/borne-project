@@ -10,7 +10,34 @@
     <title>Détails du film</title>
 </head>
 <body x-data="app()">
-   
-    <script src="./src/js/filmDetails.js"></script>
+    <a href="index.html" class="bg-blue-400">retour</a>
+    <div>
+        <p>Contenu du panier:</p>
+        <template x-for="(item, index) in panierUser">
+            <div>
+                <template x-if="item.adulteQuantity > 0">
+                    <p>
+                        <span x-text="'Film : ' + item.filmName + ' Adulte x' + item.adulteQuantity + ' ' + (item.adulteQuantity * getFilmPrice(item.filmName, 'adultePrice')) + '€'"></span>
+                        <button x-on:click="resetQuantity(item, 'adulteQuantity')" class="bg-red-500 px-3 rounded-lg text-white">Supprimer</button>
+                    </p>*
+                </template>
+                <template x-if="item.etudiantQuantity > 0">
+                    <p>
+                        <span x-text="'Film : ' + item.filmName + ' Etudiant x' + item.etudiantQuantity + ' ' + (item.etudiantQuantity * getFilmPrice(item.filmName, 'etudiantPrice')) + '€'"></span>
+                        <button x-on:click="resetQuantity(item, 'etudiantQuantity')" class="bg-red-500 px-3 rounded-lg text-white">Supprimer</button>
+                    </p>
+                </template>
+                <template x-if="item.enfantQuantity > 0">
+                    <p>
+                        <span x-text="'Film : ' + item.filmName + ' Enfant x' + item.enfantQuantity + ' ' + (item.enfantQuantity * getFilmPrice(item.filmName, 'enfantPrice')) + '€'"></span>
+                        <button x-on:click="resetQuantity(item, 'enfantQuantity')" class="bg-red-500 px-3 rounded-lg text-white">Supprimer</button>
+                    </p>
+                </template>
+                <template x-if="item.snackName && item.snackQuantity > 0">
+                    <span x-text="'snack : ' + item.snackName + ' x' + item.snackQuantity + (item.largeBool ? ' Grand format ' : ' Petit format ') + (item.snackQuantity * item.snackPrice) + '€'"></span>
+                </template>
+            </div>
+        </template>
+    </div>
 </body>
 </html>
