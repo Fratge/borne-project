@@ -62,27 +62,38 @@
                     </clipPath>
                     </defs>
                     </svg>
-                <button x-on:click="open = ! open" class=" rounded-lg text-noir text-8xl"><i class="bi bi-cart2"></i></button>
+                <div class="relative">
+                    <div x-show="open" class="text-noir flex flex-col gap-[8px] absolute mb-[64px] bottom-[25px] bg-blanc w-[316px] p-[16px] rounded-[16px] border-solid border-noir border-[4px]">
+                        <p class="titre3">Contenu du panier:</p>
+                        <div class="w-full bg-noir h-[4px]"></div>
+                        <template x-for="item in panierUser">
+                            <div class="flex items-center titre4 gap-[16px] border-b-solid border-b-noir border-b-[2px] ">
+                                <button x-on:click="removeFromPanier(item)" class=" text-noir"><i class="bi bi-x-circle text-[32px]"></i></button>
+                                <div class="flex items-center gap-[16px] ">
+                                    <p>
+                                        <template x-if="isMany(item) > 1">
+                                            <span x-text="isMany(item) + 'x'"></span>
+                                        </template>
+                                        <span x-text="item.filmName"></span>
+                                        <span x-text="item.quantity + 'x'"></span>
+                                    </p>
+                                    <p x-text="item.price" class="titre3_extrabold"></p>
+                                </div>
+                            
+                               
+                            </div>
+                            
+                        </template>
+                        <div class="w-full bg-noir h-[4px]"></div>
+                        <p class="titre3">Total panier: <span x-text="calculateTotal()"></span> €</p>
+                    </div>
+                    <button x-on:click="open = ! open" class=" rounded-lg text-noir text-8xl"><i class="bi bi-cart2"></i></button>
+                </div>
+                
             </div>
        
         
-            <div x-show="open">
-                <p class="font-sans">Contenu du panier:</p>
-                <template x-for="item in panierUser">
-                    <div>
-                        <p>
-                            <template x-if="isMany(item) > 1">
-                                <span x-text="isMany(item) + 'x'"></span>
-                            </template>
-                            <span x-text="item.filmName"></span>
-                            <span x-text="item.quantity + 'x'"></span>
-                        </p>
-                        <p x-text="item.price"></p>
-                        <button x-on:click="removeFromPanier(item)" class="bg-red-500 px-3 rounded-lg text-white">Supprimer</button>
-                    </div>
-                </template>
-                <p>Total panier: <span x-text="calculateTotal()"></span> €</p>
-            </div>
+
             
         </div>
     </nav>
@@ -99,7 +110,7 @@
                         <span class="flex items-center justify-between">
                             <h3 class="titre4">20h00 à 24h00</h3>
                            
-                            <p class="titre3" x-text="film.price + ' €'"></p>
+                            <p class="titre3_extrabold" x-text="film.price + ' €'"></p>
                         </span>
                         
                     </div>
