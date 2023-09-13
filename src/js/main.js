@@ -7,7 +7,8 @@ const app = () => {
         adulteQuantity: 0, 
         etudiantQuantity: 0, 
         enfantQuantity: 0, 
-        
+        snackQuantity: 1,
+
         panierUser: initialPanier,
         selectedFilm: JSON.parse(localStorage.getItem('selectedFilm')),
 
@@ -53,16 +54,22 @@ const app = () => {
             let total = 0;
         
             for (const item of this.panierUser) {
-                const film = this.filmsList.find(f => f.filmName === item.filmName);
-        
-                if (film) {
-                    total += (film.adultePrice * item.adulteQuantity) +
-                             (film.etudiantPrice * item.etudiantQuantity) +
-                             (film.enfantPrice * item.enfantQuantity);
+                if (item.filmName) {
+                    const film = this.filmsList.find(f => f.filmName === item.filmName);
+                    if (film) {
+                        total += (film.adultePrice * item.adulteQuantity) +
+                                 (film.etudiantPrice * item.etudiantQuantity) +
+                                 (film.enfantPrice * item.enfantQuantity);
+                                    console.log(total)
+
+                    }
+                } else if (item.snackName) {
+                    total += item.snackPrice * item.snackQuantity;
                 }
             }
             return total.toFixed(2) + ' €';
         },
+        
 
         getFilmPrice(filmName, priceType) {
             const film = this.filmsList.find(f => f.filmName === filmName);
@@ -76,6 +83,57 @@ const app = () => {
             snack.largeBool = !snack.largeBool;
         },
 
+        addToPanierSnack(snack) {
+            let snackPrice = snack.largeFormat;
+        
+            if (snack.largeBool === false) {
+                snackPrice = snack.smallFormat;
+            }
+        
+            const existingItemIndex = this.panierUser.findIndex(item => 
+                item.snackName === snack.snackName && item.largeBool === snack.largeBool
+            );
+        
+            if (existingItemIndex !== -1) {
+                this.panierUser[existingItemIndex].snackQuantity++;
+            } else {
+
+                const newItem = {
+                    snackName: snack.snackName,
+                    largeBool: snack.largeBool,
+                    snackPrice: snackPrice,
+                    snackQuantity: 1, 
+                };
+        
+                this.panierUser.push(newItem);
+            }
+        
+            this.setPanierUser();
+            console.log(this.panierUser);
+        },
+
+        decrementSnackQuantity(snack) {
+            if (this.snackQuantity > 0) {
+                this.snackQuantity--;
+                const existingItemIndex = this.panierUser.findIndex(item => 
+                    item.snackName === snack.snackName && item.largeBool === snack.largeBool
+                );
+        
+                if (existingItemIndex !== -1) {
+                    this.panierUser[existingItemIndex].snackQuantity--;
+                    this.setPanierUser();
+                }
+            }
+        },
+
+        getSnackPrice(snack){
+            if (snack.largeBool === false) {
+                console.log(snack.smallFormat);
+                return snack.smallFormat;
+            }
+            return snack.largeFormat
+        }
+        
 
     }
 }
