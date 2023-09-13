@@ -10,12 +10,15 @@
 }
 
 .titre2{
-    @apply text-titre3 font-sans font-bold;
+    @apply text-titre2 font-sans font-bold;
 }
 
 .titre4{
     @apply text-titre4 font-sans font-bold;
 }
-.titre3{
+.titre3_extrabold{
     @apply text-titre3 font-sans font-extrabold;
+}
+.titre3{
+    @apply text-titre3 font-sans font-bold;
 }
