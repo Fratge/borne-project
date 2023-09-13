@@ -704,8 +704,111 @@ video {
   width: 24rem;
 }
 
+.w-\[100vw\] {
+  width: 100vw;
+}
+
+.w-\[1125px\] {
+  width: 1125px;
+}
+
+.w-\[281px\] {
+  width: 281px;
+}
+
+.w-\[316px\] {
+  width: 316px;
+}
+
+.w-\[861px\] {
+  width: 861px;
+}
+
+.w-fit {
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.max-w-none {
+  max-width: none;
+}
+
+.border-collapse {
+  border-collapse: collapse;
+}
+
+.scale-x-\[192\%\] {
+  --tw-scale-x: 192%;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.scale-y-\[180\%\] {
+  --tw-scale-y: 180%;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.transform {
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.resize {
+  resize: both;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.flex-col-reverse {
+  flex-direction: column-reverse;
+}
+
 .flex-wrap {
   flex-wrap: wrap;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.gap-5 {
+  gap: 1.25rem;
+}
+
+.gap-\[124px\] {
+  gap: 124px;
+}
+
+.gap-\[16px\] {
+  gap: 16px;
+}
+
+.gap-\[32px\] {
+  gap: 32px;
+}
+
+.gap-\[8px\] {
+  gap: 8px;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.rounded-\[16px\] {
+  border-radius: 16px;
+}
+
+.rounded-full {
+  border-radius: 9999px;
 }
 
 .rounded-lg {
@@ -772,14 +875,14 @@ video {
   background-color: rgb(253 200 53 / var(--tw-bg-opacity));
 }
 
-.bg-noir {
-  --tw-bg-opacity: 1;
-  background-color: rgb(8 36 49 / var(--tw-bg-opacity));
-}
-
 .bg-lime-500 {
   --tw-bg-opacity: 1;
   background-color: rgb(132 204 22 / var(--tw-bg-opacity));
+}
+
+.bg-noir {
+  --tw-bg-opacity: 1;
+  background-color: rgb(8 36 49 / var(--tw-bg-opacity));
 }
 
 .bg-red-500 {
