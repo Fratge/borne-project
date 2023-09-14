@@ -990,6 +990,11 @@ video {
   padding-bottom: 8px;
 }
 
+.py-1 {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+
 .pt-3 {
   padding-top: 0.75rem;
 }

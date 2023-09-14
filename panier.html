@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="./src/css/output.css">
     <script src="./src/js/data.js"></script>
     <script src="./src/js/main.js"></script>
+    <script src="./src/js/pagePanier.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <title>Détails du film</title>
 </head>
@@ -15,26 +16,15 @@
         <p>Contenu du panier:</p>
         <template x-for="(item, index) in panierUser">
             <div>
-                <template x-if="item.adulteQuantity > 0">
-                    <p>
-                        <span x-text="'Film : ' + item.filmName + ' Adulte x' + item.adulteQuantity + ' ' + (item.adulteQuantity * getFilmPrice(item.filmName, 'adultePrice')) + '€'"></span>
-                        <button x-on:click="resetQuantity(item, 'adulteQuantity')" class="bg-red-500 px-3 rounded-lg text-white">Supprimer</button>
-                    </p>*
-                </template>
-                <template x-if="item.etudiantQuantity > 0">
-                    <p>
-                        <span x-text="'Film : ' + item.filmName + ' Etudiant x' + item.etudiantQuantity + ' ' + (item.etudiantQuantity * getFilmPrice(item.filmName, 'etudiantPrice')) + '€'"></span>
-                        <button x-on:click="resetQuantity(item, 'etudiantQuantity')" class="bg-red-500 px-3 rounded-lg text-white">Supprimer</button>
-                    </p>
-                </template>
-                <template x-if="item.enfantQuantity > 0">
-                    <p>
-                        <span x-text="'Film : ' + item.filmName + ' Enfant x' + item.enfantQuantity + ' ' + (item.enfantQuantity * getFilmPrice(item.filmName, 'enfantPrice')) + '€'"></span>
-                        <button x-on:click="resetQuantity(item, 'enfantQuantity')" class="bg-red-500 px-3 rounded-lg text-white">Supprimer</button>
-                    </p>
-                </template>
                 <template x-if="item.snackName && item.snackQuantity > 0">
-                    <span x-text="'snack : ' + item.snackName + ' x' + item.snackQuantity + (item.largeBool ? ' Grand format ' : ' Petit format ') + (item.snackQuantity * item.snackPrice) + '€'"></span>
+                    <div class="flex gap-3">
+                        <span x-text="item.snackName + (item.largeBool ? ' Grand format ' : ' Petit format ')"></span>
+                        <button class="plusButton" @click="item.snackQuantity++">+</button>
+                        <p x-text=" item.snackQuantity" class="inputValue"></p>
+                        <button class="minusButton">-</button>
+                        <button class="modifier bg-red-500 py-1 px-3">Supprimer</button>
+                        <p x-text=" (item.snackQuantity * item.snackPrice) + '€'"></p>
+                    </div>
                 </template>
             </div>
         </template>
