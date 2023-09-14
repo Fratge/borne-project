@@ -1,3 +1,24 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&display=swap');
+
+.titre1{
+    @apply text-titre1 font-sans font-extrabold uppercase;
+}
+
+.titre2{
+    @apply text-titre2 font-sans font-bold;
+}
+
+.titre4{
+    @apply text-titre4 font-sans font-bold;
+}
+.titre3_extrabold{
+    @apply text-titre3 font-sans font-extrabold;
+}
+.titre3{
+    @apply text-titre3 font-sans font-bold;
+}
