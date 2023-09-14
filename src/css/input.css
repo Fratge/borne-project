@@ -5,6 +5,10 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&display=swap');
 
+.paragraphe{
+    @apply text-paragraphe font-sans font-medium ;
+}
+
 .titre1{
     @apply text-titre1 font-sans font-extrabold uppercase;
 }

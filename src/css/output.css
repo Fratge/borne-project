@@ -566,12 +566,24 @@ video {
   bottom: 25px;
 }
 
+.left-\[-230px\] {
+  left: -230px;
+}
+
 .left-\[-274px\] {
   left: -274px;
 }
 
 .left-\[-34px\] {
   left: -34px;
+}
+
+.left-\[-52px\] {
+  left: -52px;
+}
+
+.left-\[185px\] {
+  left: 185px;
 }
 
 .left-\[402px\] {
@@ -582,12 +594,28 @@ video {
   top: 0px;
 }
 
+.top-\[-112px\] {
+  top: -112px;
+}
+
+.top-\[-410px\] {
+  top: -410px;
+}
+
 .top-\[1026px\] {
   top: 1026px;
 }
 
+.top-\[1356px\] {
+  top: 1356px;
+}
+
 .top-\[326px\] {
   top: 326px;
+}
+
+.top-\[360px\] {
+  top: 360px;
 }
 
 .top-\[800px\] {
@@ -625,6 +653,10 @@ video {
 
 .mt-24 {
   margin-top: 6rem;
+}
+
+.mt-\[128px\] {
+  margin-top: 128px;
 }
 
 .block {
@@ -675,6 +707,10 @@ video {
   height: 4px;
 }
 
+.h-\[64px\] {
+  height: 64px;
+}
+
 .h-\[700px\] {
   height: 700px;
 }
@@ -712,16 +748,40 @@ video {
   width: 1125px;
 }
 
+.w-\[1228px\] {
+  width: 1228px;
+}
+
 .w-\[281px\] {
   width: 281px;
+}
+
+.w-\[2px\] {
+  width: 2px;
+}
+
+.w-\[314px\] {
+  width: 314px;
 }
 
 .w-\[316px\] {
   width: 316px;
 }
 
+.w-\[4px\] {
+  width: 4px;
+}
+
+.w-\[85\%\] {
+  width: 85%;
+}
+
 .w-\[861px\] {
   width: 861px;
+}
+
+.w-auto {
+  width: auto;
 }
 
 .w-fit {
@@ -731,6 +791,14 @@ video {
 
 .w-full {
   width: 100%;
+}
+
+.w-\[80\%\] {
+  width: 80%;
+}
+
+.w-\[82\%\] {
+  width: 82%;
 }
 
 .max-w-none {
@@ -795,6 +863,10 @@ video {
   gap: 32px;
 }
 
+.gap-\[56px\] {
+  gap: 56px;
+}
+
 .gap-\[8px\] {
   gap: 8px;
 }
@@ -823,8 +895,16 @@ video {
   border-width: 4px;
 }
 
+.border-b {
+  border-bottom-width: 1px;
+}
+
 .border-b-\[2px\] {
   border-bottom-width: 2px;
+}
+
+.border-b-\[4px\] {
+  border-bottom-width: 4px;
 }
 
 .border-t-\[4px\] {
@@ -845,9 +925,19 @@ video {
   border-color: rgb(239 68 68 / var(--tw-border-opacity));
 }
 
+.border-rose_fonce {
+  --tw-border-opacity: 1;
+  border-color: rgb(40 2 7 / var(--tw-border-opacity));
+}
+
 .border-b-noir {
   --tw-border-opacity: 1;
   border-bottom-color: rgb(8 36 49 / var(--tw-border-opacity));
+}
+
+.border-b-rose_fonce {
+  --tw-border-opacity: 1;
+  border-bottom-color: rgb(40 2 7 / var(--tw-border-opacity));
 }
 
 .border-t-noir {
@@ -895,6 +985,11 @@ video {
   background-color: rgb(231 54 79 / var(--tw-bg-opacity));
 }
 
+.bg-rose_fonce {
+  --tw-bg-opacity: 1;
+  background-color: rgb(40 2 7 / var(--tw-bg-opacity));
+}
+
 .bg-slate-400 {
   --tw-bg-opacity: 1;
   background-color: rgb(148 163 184 / var(--tw-bg-opacity));
@@ -920,6 +1015,14 @@ video {
 
 .p-\[16px\] {
   padding: 16px;
+}
+
+.p-\[32px\] {
+  padding: 32px;
+}
+
+.p-\[8px\] {
+  padding: 8px;
 }
 
 .px-3 {
@@ -952,9 +1055,19 @@ video {
   padding-right: 56px;
 }
 
+.px-\[8px\] {
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
 .px-\[96px\] {
   padding-left: 96px;
   padding-right: 96px;
+}
+
+.py-\[16px\] {
+  padding-top: 16px;
+  padding-bottom: 16px;
 }
 
 .py-\[8px\] {
@@ -983,6 +1096,11 @@ video {
   font-size: 66px;
 }
 
+.text-paragraphe {
+  font-size: 16px;
+  line-height: auto;
+}
+
 .text-titre1 {
   font-size: 128px;
   line-height: auto;
@@ -1007,6 +1125,10 @@ video {
   font-weight: 800;
 }
 
+.font-medium {
+  font-weight: 500;
+}
+
 .uppercase {
   text-transform: uppercase;
 }
@@ -1019,6 +1141,11 @@ video {
 .text-noir {
   --tw-text-opacity: 1;
   color: rgb(8 36 49 / var(--tw-text-opacity));
+}
+
+.text-rose_fonce {
+  --tw-text-opacity: 1;
+  color: rgb(40 2 7 / var(--tw-text-opacity));
 }
 
 .text-white {
@@ -1057,6 +1184,13 @@ video {
 .backdrop-filter {
   -webkit-backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
           backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
+}
+
+.paragraphe {
+  font-family: Dosis, sans-serif;
+  font-size: 16px;
+  line-height: auto;
+  font-weight: 500;
 }
 
 .titre1 {
