@@ -67,7 +67,7 @@ const app = () => {
                     total += item.snackPrice * item.snackQuantity;
                 }
             }
-            return total.toFixed(2) + ' €';
+            return total.toFixed(2);
         },
         
 
