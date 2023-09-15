@@ -169,29 +169,38 @@
                 
             </section>
 
-        <div id="snacksContainer" class="hidden absolute top-[360px] w-[82%] bg-blanc">
+        <div id="snacksContainer" class="hidden absolute top-[360px] w-[82%] bg-blanc rounded-[16px] border-solid border-rose_fonce border-[4px]">
             <div class="px-[16px] py-[8px] border-b-rose_fonce border-b-solid border-b-[4px]">
                 <h2 class="titre2">Friandises</h2>
             </div>
-            
-            <template x-for="snack in snacksList">
-                <div class="">
-                    <p x-text="snack.snackName"></p>
-                    <img :src="snack.snackImage" class="w-24">
-                    <div>
-                        <p x-text="'prix : ' + (snack.largeBool ? snack.largeFormat : snack.smallFormat) + '€'" id="snackPrice"></p>
+            <div class="flex justify-between">
+                <template x-for="snack in snacksList">
+                    <div class="">
+                      
+                        <img :src="snack.snackImage" class="w-24">
                         <div>
-                            <button :style="{'background': snack.largeBool === false ? 'red' : ''}" @click="background(snack)" class="small-format">S</button>
-                            <button :style="{'background': snack.largeBool === true ? 'red' : ''}" @click="background(snack)" class="large-format">L</button>
-                        </div>
-                        <div class="flex bg-lime-500 w-fit">
-                            <button class="plusButton" @click="addToPanierSnack(snack); snackQuantity++">+</button>
-                            <p class="inputValue">0</p>
-                            <button class="minusButton" @click="decrementSnackQuantity(snack)">-</button>
+                            <div class="flex">
+                                <div>
+                                    <p x-text="snack.snackName"></p>
+                                    <p x-text="'prix : ' + (snack.largeBool ? snack.largeFormat : snack.smallFormat) + '€'" id="snackPrice"></p>
+                                </div>
+        
+                                <div class="flex flex-col">
+                                    <button :style="{'background': snack.largeBool === false ? 'red' : ''}" @click="background(snack)" class="small-format">S</button>
+                                    <button :style="{'background': snack.largeBool === true ? 'red' : ''}" @click="background(snack)" class="large-format">L</button>
+                                </div>
+                            </div>
+    
+                            <div class="flex bg-lime-500 w-fit">
+                                <button class="plusButton" @click="addToPanierSnack(snack); snackQuantity++">+</button>
+                                <p class="inputValue">0</p>
+                                <button class="minusButton" @click="decrementSnackQuantity(snack)">-</button>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </template>
+                </template>
+            </div>
+
             <template x-for="(item, index) in panierUser">
                 <template x-if="item.snackName && item.snackQuantity > 0">
                     <div>
