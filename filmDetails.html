@@ -169,15 +169,18 @@
                 
             </section>
 
-        <div id="snacksContainer" class="hidden absolute top-[360px] w-[82%] bg-blanc rounded-[16px] border-solid border-rose_fonce border-[4px]">
+        <div id="snacksContainer" class="flex flex-col h-[1112px] hidden absolute top-[360px] w-[82%] bg-blanc rounded-[16px] border-solid border-rose_fonce border-[4px]">
             <div class="px-[16px] py-[8px] border-b-rose_fonce border-b-solid border-b-[4px]">
                 <h2 class="titre2">Friandises</h2>
             </div>
-            <div class="flex justify-between">
+            <div class="h-full flex justify-between border-b-solid border-b-rose_fonce border-b-[4px]">
                 <template x-for="snack in snacksList">
                     <div class="">
                       
-                        <img :src="snack.snackImage" class="w-24">
+                        <div class="h-[447px] w-[271px] overflow-hidden">
+                            <img :src="snack.snackImage" class="h-full max-w-none">
+                        </div>
+                       
                         <div>
                             <div class="flex">
                                 <div>
