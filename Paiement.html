@@ -8,6 +8,7 @@
     <script src="./src/js/data.js"></script>
     <script src="./src/js/main.js"></script>
     <script src="./src/js/pagePanier.js"></script>
+    <script defer src="./src/js/PaiementChargement.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <title>Détails du film</title>
@@ -18,8 +19,7 @@
 
         <div class="carre2 absolute rounded-full left-[-125px] top-[1171px] w-[1228px] h-[915px] bg-vert z-0 blur-[200px]"></div>
     </div>
-    <nav class="w-full h-full absolute flex flex-col-reverse">
-     
+    <nav class="w-full h-full absolute flex flex-col-reverse">    
         <div x-data="{ open: false }" class="  sticky bottom-[0vh] z-20 flex flex-col gap-[32px] ">
             <div class="flex bg-blanc w-fit titre2 text-noir border-solid border-[4px] border-noir items-center gap-[32px] px-[16px] rounded-[16px] ml-[56px]">
                 <i class="bi bi-x-circle text-[66px]"></i>
@@ -109,111 +109,35 @@
                     <button x-on:click="open = ! open" class=" rounded-lg text-noir text-8xl"><i class="bi bi-cart2"></i></button>
                 </div>
                 <a href="index.html" class="text-rose_fonce text-8xl"><i class="bi bi-arrow-90deg-left"></i></a>
-            </div>
-       
-        
-
-            
+            </div>         
         </div>
     </nav>
     <main class="px-[96px] h-[200%]  overflow-scroll  backdrop-blur-[100px] relative z-10 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHhtbG5zOnN2Z2pzPSJodHRwOi8vc3ZnanMuZGV2L3N2Z2pzIiB2aWV3Qm94PSIwIDAgNzAwIDcwMCIgd2lkdGg9IjcwMCIgaGVpZ2h0PSI3MDAiIG9wYWNpdHk9IjAuMjUiPjxkZWZzPjxmaWx0ZXIgaWQ9Im5ubm9pc2UtZmlsdGVyIiB4PSItMjAlIiB5PSItMjAlIiB3aWR0aD0iMTQwJSIgaGVpZ2h0PSIxNDAlIiBmaWx0ZXJVbml0cz0ib2JqZWN0Qm91bmRpbmdCb3giIHByaW1pdGl2ZVVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgY29sb3ItaW50ZXJwb2xhdGlvbi1maWx0ZXJzPSJsaW5lYXJSR0IiPgoJPGZlVHVyYnVsZW5jZSB0eXBlPSJmcmFjdGFsTm9pc2UiIGJhc2VGcmVxdWVuY3k9IjAuMTEyIiBudW1PY3RhdmVzPSI0IiBzZWVkPSIxNSIgc3RpdGNoVGlsZXM9InN0aXRjaCIgeD0iMCUiIHk9IjAlIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiByZXN1bHQ9InR1cmJ1bGVuY2UiPjwvZmVUdXJidWxlbmNlPgoJPGZlU3BlY3VsYXJMaWdodGluZyBzdXJmYWNlU2NhbGU9IjgiIHNwZWN1bGFyQ29uc3RhbnQ9IjAuNyIgc3BlY3VsYXJFeHBvbmVudD0iMjAiIGxpZ2h0aW5nLWNvbG9yPSIjZmZmZmZmIiB4PSIwJSIgeT0iMCUiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGluPSJ0dXJidWxlbmNlIiByZXN1bHQ9InNwZWN1bGFyTGlnaHRpbmciPgogICAgCQk8ZmVEaXN0YW50TGlnaHQgYXppbXV0aD0iMyIgZWxldmF0aW9uPSI4OCI+PC9mZURpc3RhbnRMaWdodD4KICAJPC9mZVNwZWN1bGFyTGlnaHRpbmc+CiAgCjwvZmlsdGVyPjwvZGVmcz48cmVjdCB3aWR0aD0iNzAwIiBoZWlnaHQ9IjcwMCIgZmlsbD0idHJhbnNwYXJlbnQiPjwvcmVjdD48cmVjdCB3aWR0aD0iNzAwIiBoZWlnaHQ9IjcwMCIgZmlsbD0iI2ZmZmZmZiIgZmlsdGVyPSJ1cmwoI25ubm9pc2UtZmlsdGVyKSI+PC9yZWN0Pjwvc3ZnPg==')]">
-        
-        <h1 class="text-blanc titre1 my-[104px] text-center scale-x-[192%] scale-y-[180%]" >Panier</h1>
-
-        <div class="bg-blanc p-[32px] rounded-[16px] border-vert_fonce border-solid border-[4px]" >
-            <template x-for="(item, index) in panierUser">
-                <div class="flex flex-col ">
-                    <template x-if="item.adulteQuantity > 0">
-                        <div class="flex gap-[32px] my-[24px] w-full items-center ">
-                            <span class="text-[22px] text-grey-400  w-[340px]"><h2 class="titre2 inline" x-text="item.filmName"></h2> Adulte</span>
-                            <div class="flex border-solid border-rose_fonce border-[4px] px-[8px] titre4 justify-between items-center rounded-[16px]  p-[8px]  gap-[16px] w-[175px] h-[55px]">
-                                <button class="plusButtonAdulte" @click="incrementFilmQuantity(item, 'adulteQuantity')"><i class="bi bi-plus-lg"></i></button>
-                                <div class="w-[2px] bg-rose_fonce h-full"></div>
-                                <p x-text="item.adulteQuantity + 'x'" class="inputValueAdulte"></p>
-                                <div class="w-[2px] bg-rose_fonce h-full"></div>
-                                <button class="minusButtonAdulte" @click="decrementFilmQuantity(item, 'adulteQuantity')"><i class="bi bi-dash"></i></button>
-                            </div>
-                            <button x-on:click="resetQuantity(item, 'adulteQuantity')"><i class="bi bi-trash text-[45px] text-red-600 ml-12 mr-8"></i></button>
-                            <h2 class="titre2 w-[50px]" x-text="(item.adulteQuantity * getFilmPrice(item.filmName, 'adultePrice')) + '€'"></h2>
-                        </div>
-                    </template>
-                    <template x-if="item.etudiantQuantity > 0">
-                        <div class="flex gap-[32px]  my-[24px] w-full items-center">
-                            <span class="text-[22px] text-grey-400  w-[340px]"><h2 class="titre2  inline" x-text="item.filmName"></h2> Etudiant</span>
-                            <div class="flex border-solid border-rose_fonce border-[4px] px-[8px] titre4 justify-between items-center rounded-[16px]  p-[8px]  gap-[16px] w-[175px] h-[55px]">
-                                <button class="plusButtonEtudiant" @click="incrementFilmQuantity(item, 'etudiantQuantity')"><i class="bi bi-plus-lg"></i></button>
-                                <div class="w-[2px] bg-rose_fonce h-full"></div>
-                                <p x-text="' Etudiant ' + item.etudiantQuantity + 'x'" class="inputValueEtudiant"></p>
-                                <div class="w-[2px] bg-rose_fonce h-full"></div>
-                                <button class="minusButtonEtudiant" @click="decrementFilmQuantity(item, 'etudiantQuantity')"><i class="bi bi-dash"></i></button>
-                            </div>
-                            <button x-on:click="resetQuantity(item, 'etudiantQuantity')"><i class="bi bi-trash text-[45px] text-red-600 ml-12 mr-8"></i></button>
-                            <h2 class="titre2 w-[50px]" x-text="(item.etudiantQuantity * getFilmPrice(item.filmName, 'etudiantPrice')) + '€'"></h2>
-                        </div>
-                    </template>
-                    <template x-if="item.enfantQuantity > 0">
-                        <div class="flex gap-[32px]  my-[24px] w-full items-center">
-                            <span class="text-[22px] text-grey-400 w-[340px]"><h2 class="titre2  inline" x-text="item.filmName"></h2> Enfant</span>
-                            <div class="flex border-solid border-rose_fonce border-[4px] px-[8px] titre4 justify-between items-center rounded-[16px]  p-[8px]  gap-[16px] w-[175px] h-[55px]">
-                                <button class="plusButtonEnfant" @click="decrementFilmQuantity(item, 'enfantQuantity')"><i class="bi bi-plus-lg"></i></button>
-                                <div class="w-[2px] bg-rose_fonce h-full"></div>
-                                <p x-text="' Enfant ' + item.enfantQuantity + 'x'" class="inputValueEnfant"></p>
-                                <div class="w-[2px] bg-rose_fonce h-full"></div>
-                                <button class="minusButtonEnfant" @click="decrementFilmQuantity(item, 'enfantQuantity')"><i class="bi bi-dash"></i></button>
-                            </div>
-                            <button x-on:click="resetQuantity(item, 'enfantQuantity')"><i class="bi bi-trash text-[45px] text-red-600 ml-12 mr-8"></i></button>
-                            <h2 class="titre2 w-[50px]" x-text="(item.enfantQuantity * getFilmPrice(item.filmName, 'enfantPrice')) + '€'"></h2>
-                        </div>
-                    </template>
-                    <template x-if="item.snackName && item.snackQuantity > 0">
-                        <div class="flex gap-[32px]  my-[24px] w-full items-center">
-                            <h2 class="titre2 w-[340px]" x-text="item.snackName + (item.largeBool ? ' Grand format ' : ' Petit format ')"></h2>
-                            <div class="flex border-solid border-rose_fonce border-[4px] px-[8px] titre4 justify-between items-center rounded-[16px]  p-[8px]  gap-[16px] w-[175px] h-[55px]">
-                                <button class="plusButton" @click="incrementSnackQuantity(item)"><i class="bi bi-plus-lg"></i></button>
-                                <div class="w-[2px] bg-rose_fonce h-full"></div>
-                                <p x-text=" item.snackQuantity + 'x'" class="inputValue"></p>
-                                <div class="w-[2px] bg-rose_fonce h-full"></div>
-                                <button class="minusButton" @click="decrementSnackQuantity(item)"><i class="bi bi-dash"></i></button>
-                            </div>
-        
-                            <button x-on:click="resetQuantity(item, 'snackQuantity')"><i class="bi bi-trash text-[45px] text-red-600 ml-12 mr-8"></i></button>
-                            <h2 class="titre2 w-[50px]" x-text=" (item.snackQuantity * item.snackPrice) + '€'"></h2>
-                        </div>
-                    </template>
-                </div>
-            </template>
-            <div class="h-[4px] w-full bg-vert_fonce rounded-full "></div>
-            <div class="flex flex-col gap-[16px] py-[16px]">
-                <span class="flex justify-between w-full titre2">
-                    <h2>Total</h2>
-                    <h2 x-text="calculateTotalNoTaxes() + ' $' ">00$</h2>
-                </span>
-                <span class="flex justify-between w-full">
-                    <h2 class="titre2">TPS</h2>
-                    <div class="flex">
-                        <p class="titre4 self-end">(5%)</p>
-                        <h2 class="titre2" x-text="(calculateTotalNoTaxes() * 0.05).toFixed(2) + ' $'">00$</h2>
-                    </div>
-                </span>
-                <span class="flex justify-between w-full">
-                    <h2 class="titre2">TVQ</h2>
-                    <div class="flex">
-                        <p class="titre4 self-end">(9%)</p>
-                        <h2 class="titre2" x-text="(calculateTotalNoTaxes() * 0.09).toFixed(2) + ' $'">00$</h2>
-                    </div>
-                </span>
+        <h1 class="text-blanc titre1 my-[104px] text-center scale-x-[192%] scale-y-[180%]" >Paiement</h1>
+        <div class="boutons flex justify-between gap-[32px] mt-[360px] ">
+            <div class="w-full bg-blanc border-rose_fonce border-solid border-[4px] flex flex-col justify-between items-center rounded-[16px] ">
+                <i class="text-[232px] bi bi-currency-dollar"></i>
+                <div class="h-[4px] bg-vert_fonce w-[80%]"></div>
+                <h1 class="titre1">Comptoire</h1>
             </div>
-            <div class="h-[4px] w-full bg-vert_fonce rounded-full "></div>
-            <div class="justify-between flex">
-                <h2 class="titre2">Total</h2>
-                <h2 class="titre2"><span x-text="((calculateTotalNoTaxes() * 1.05) + (calculateTotalNoTaxes() * 0.09)).toFixed(2) + ' $'"></span></h2> 
+            <div class="w-full bg-blanc border-rose_fonce border-solid border-[4px] flex flex-col justify-between items-center rounded-[16px] ">
+                <div class="my-[42px]">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="309" height="261" viewBox="0 0 309 261" fill="none">
+                        <path d="M191.656 77.0331C191.067 74.8436 191.358 72.5154 192.465 70.5606C193.572 68.6057 195.404 67.1844 197.558 66.6092L230.044 57.9348C232.198 57.3596 234.498 57.6778 236.437 58.8192C238.377 59.9607 239.797 61.832 240.386 64.0214L244.825 80.5319C245.414 82.7213 245.123 85.0495 244.016 87.0044C242.909 88.9592 241.077 90.3806 238.923 90.9557L206.437 99.6302C204.283 100.205 201.983 99.8872 200.044 98.7457C198.104 97.6042 196.684 95.733 196.095 93.5435L191.656 77.0331Z" fill="#81B26B"/>
+                        <path d="M32.1617 60.114C23.6319 62.3916 16.3594 67.9525 11.944 75.5735C7.52866 83.1945 6.33215 92.2513 8.61771 100.751L43.0885 228.95C45.3741 237.45 50.9545 244.698 58.6021 249.098C66.2497 253.498 75.3381 254.69 83.868 252.412L276.838 200.886C285.368 198.609 292.641 193.048 297.056 185.427C301.471 177.806 302.668 168.749 300.382 160.249L265.911 32.0498C263.626 23.5497 258.045 16.3025 250.398 11.9025C242.75 7.50251 233.662 6.31017 225.132 8.58777L32.1617 60.114ZM249.831 36.3437L271.375 116.468L46.2428 176.582L24.6986 96.4575C23.5558 92.2075 24.154 87.6791 26.3617 83.8686C28.5694 80.0581 32.2057 77.2776 36.4706 76.1388L229.441 24.6126C233.706 23.4738 238.25 24.07 242.074 26.27C245.898 28.47 248.688 32.0936 249.831 36.3437ZM272.529 184.861L79.5591 236.388C75.2942 237.526 70.75 236.93 66.9262 234.73C63.1024 232.53 60.3122 228.907 59.1694 224.656L54.8605 208.632L279.993 148.518L284.301 164.543C285.444 168.793 284.846 173.321 282.638 177.132C280.431 180.942 276.794 183.723 272.529 184.861Z" fill="#0E2802"/>
+                    </svg>
+                </div>
+
+                <div class="h-[4px] bg-vert_fonce w-[80%]"></div>
+                <h1 class="titre1">Carte</h1>
             </div>
         </div>
-        <div class="flex justify-between mt-[128px] mb-[460px]">
-            <button class="p-[16px] bg-blanc titre2 rounded-[16px] border-solid border-rose_fonce border-[4px]" id="reserver">Friandises+</button>
-            <a  class="p-[16px] bg-blanc titre2 rounded-[16px] border-solid border-rose_fonce border-[4px]" href="./Paiement.html">Paiement</a>
+        <div class="chargement flex flex-col items-center text-blanc hidden">
+            <i class="text-[360px] bi bi-ticket-perforated-fill"></i>
+            <h1 class="titre1">
+                Traitement en cours ...
+            </h1>
         </div>
     </main>
-
 </body>
 </html>
