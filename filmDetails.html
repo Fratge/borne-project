@@ -24,11 +24,11 @@
     <nav class="w-full h-full absolute flex flex-col-reverse">
      
         <div x-data="{ open: false }" class="  sticky bottom-[0vh] z-20 flex flex-col gap-[32px] ">
-            <div class="flex bg-blanc w-fit titre2 text-noir border-solid border-[4px] border-noir items-center gap-[32px] px-[16px] rounded-[16px] ml-[56px]">
+            <div class="flex bg-blanc w-fit titre2 text-rose_fonce border-solid border-[4px] border-rose_fonce items-center gap-[32px] px-[16px] rounded-[16px] ml-[56px]">
                 <i class="bi bi-x-circle text-[66px]"></i>
                 <p>Annuler la commande</p>
             </div>
-            <div class="bg-blanc flex items-center h-[214px] gap-[124px] px-[56px] border-t-solid border-t-noir border-t-[4px]">
+            <div class="bg-blanc flex items-center h-[214px] gap-[124px] px-[56px] border-t-solid border-t-rose_fonce border-t-[4px]">
                 <svg xmlns="http://www.w3.org/2000/svg" width="285" height="109" viewBox="0 0 285 109" fill="none">
                     <g clip-path="url(#clip0_46_51)">
                     <path d="M225.22 65.0815H244.277L280.57 28.8656L260.978 9.31543L225.22 44.9905V65.0815Z" fill="#082431"/>
@@ -106,12 +106,13 @@
                             </div>
                         </template>
                         <div class="w-full bg-noir h-[4px]"></div>
-                        <p class="titre3">Total panier: <span x-text="calculateTotal()"></span> €</p>
+                        <p class="titre3">Total panier: <span x-text="calculateTotal()"></span> $</p>
                         <a href="panier.html" class="titre3 p-[8px] border-[2px] border-solid border-rose_fonce rounded-[16px]">Voir le panier</a>
                     </div>
-                    <button x-on:click="open = ! open" class=" rounded-lg text-noir text-8xl"><i class="bi bi-cart2"></i></button>
+                    <button x-on:click="open = ! open" class=" rounded-lg text-rose_fonce text-8xl"><i class="bi bi-cart2"></i></button>
                 </div>
                 <a href="index.html" class="text-rose_fonce text-8xl"><i class="bi bi-arrow-90deg-left"></i></a>
+                <a href="index.html" class="text-rose_fonce text-8xl"><i class="bi bi-house"></i></a>
             </div>
        
         
