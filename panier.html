@@ -143,7 +143,7 @@
                             <div class="flex border-solid border-rose_fonce border-[4px] px-[8px] titre4 justify-between items-center rounded-[16px]  p-[8px]  gap-[16px] w-[175px] h-[55px]">
                                 <button class="plusButtonEtudiant" @click="incrementFilmQuantity(item, 'etudiantQuantity')"><i class="bi bi-plus-lg"></i></button>
                                 <div class="w-[2px] bg-rose_fonce h-full"></div>
-                                <p x-text="' Etudiant ' + item.etudiantQuantity + 'x'" class="inputValueEtudiant"></p>
+                                <p x-text=" item.etudiantQuantity + 'x'" class="inputValueEtudiant"></p>
                                 <div class="w-[2px] bg-rose_fonce h-full"></div>
                                 <button class="minusButtonEtudiant" @click="decrementFilmQuantity(item, 'etudiantQuantity')"><i class="bi bi-dash"></i></button>
                             </div>
@@ -157,7 +157,7 @@
                             <div class="flex border-solid border-rose_fonce border-[4px] px-[8px] titre4 justify-between items-center rounded-[16px]  p-[8px]  gap-[16px] w-[175px] h-[55px]">
                                 <button class="plusButtonEnfant" @click="decrementFilmQuantity(item, 'enfantQuantity')"><i class="bi bi-plus-lg"></i></button>
                                 <div class="w-[2px] bg-rose_fonce h-full"></div>
-                                <p x-text="' Enfant ' + item.enfantQuantity + 'x'" class="inputValueEnfant"></p>
+                                <p x-text=" item.enfantQuantity + 'x'" class="inputValueEnfant"></p>
                                 <div class="w-[2px] bg-rose_fonce h-full"></div>
                                 <button class="minusButtonEnfant" @click="decrementFilmQuantity(item, 'enfantQuantity')"><i class="bi bi-dash"></i></button>
                             </div>
