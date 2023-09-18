@@ -97,7 +97,7 @@
         
 
             
-        </div>
+        </div>https://github.com/Fratge/borne-project/pull/1/conflict?name=filmDetails.html&ancestor_oid=85cf8759ae659b3e62fad491cf6d651966baaf00&base_oid=b4e39d79c481aaeee03a1856a4cb85ba4c83fc94&head_oid=b089d583d007fece166ccfe87c8900073f3e88d2
     </nav>
 
 
@@ -193,17 +193,38 @@
                 </div>
             </template>
             <template x-for="(item, index) in panierUser">
-                <template x-if="item.snackName && item.snackQuantity > 0">
-                    <div>
-                        <span x-text="'snack : ' + item.snackName + ' x' + item.snackQuantity + (item.largeBool ? ' Grand format ' : ' Petit format ') + (item.snackQuantity * item.snackPrice) + '€'"></span>
-                        <button x-on:click="resetQuantity(item, 'snackQuantity')" class="bg-red-500 px-3 rounded-lg text-white">Supprimer</button>
-                    </div>
-                </template>
+                <div>
+                    <template x-if="item.adulteQuantity > 0">
+                        <p>
+                            <span x-text="'Film : ' + item.filmName + ' Adulte x' + item.adulteQuantity + ' ' + (item.adulteQuantity * getFilmPrice(item.filmName, 'adultePrice')) + '€'"></span>
+                            <button x-on:click="resetQuantity(item, 'adulteQuantity')" class="bg-red-500 px-3 rounded-lg text-white">Supprimer</button>
+                        </p>
+                    </template>
+                    <template x-if="item.etudiantQuantity > 0">
+                        <p>
+                            <span x-text="'Film : ' + item.filmName + ' Etudiant x' + item.etudiantQuantity + ' ' + (item.etudiantQuantity * getFilmPrice(item.filmName, 'etudiantPrice')) + '€'"></span>
+                            <button x-on:click="resetQuantity(item, 'etudiantQuantity')" class="bg-red-500 px-3 rounded-lg text-white">Supprimer</button>
+                        </p>
+                    </template>
+                    <template x-if="item.enfantQuantity > 0">
+                        <p>
+                            <span x-text="'Film : ' + item.filmName + ' Enfant x' + item.enfantQuantity + ' ' + (item.enfantQuantity * getFilmPrice(item.filmName, 'enfantPrice')) + '€'"></span>
+                            <button x-on:click="resetQuantity(item, 'enfantQuantity')" class="bg-red-500 px-3 rounded-lg text-white">Supprimer</button>
+                        </p>
+                    </template>
+                    <template x-if="item.snackName && item.snackQuantity > 0">
+                        <p>
+                            <span x-text="'snack : ' + item.snackName + ' x' + item.snackQuantity + (item.largeBool ? ' Grand format ' : ' Petit format ') + (item.snackQuantity * item.snackPrice) + '€'"></span>
+                            <button x-on:click="resetQuantity(item, 'snackQuantity')" class="bg-red-500 px-3 rounded-lg text-white">Supprimer</button>
+                        </p>
+                    </template>
+                </div>
             </template>
         </div>
-
-    </main>
-
+        <p>Total panier: <span x-text="calculateTotal()"></span> </p>
+        <a href="panier.html">Voir la panier (juste pour aller sur la page)</a>
+    </div>
     <script src="./src/js/filmDetails.js"></script>
 </body>
 </html>
+

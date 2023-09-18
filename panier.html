@@ -6,11 +6,58 @@
     <link rel="stylesheet" href="./src/css/output.css">
     <script src="./src/js/data.js"></script>
     <script src="./src/js/main.js"></script>
+    <script src="./src/js/pagePanier.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <title>Détails du film</title>
 </head>
 <body x-data="app()">
-   
-    <script src="./src/js/filmDetails.js"></script>
+    <a href="index.html" class="bg-blue-400">retour</a>
+    <div>
+        <p>Contenu du panier:</p>
+        <template x-for="(item, index) in panierUser">
+            <div>
+                <template x-if="item.adulteQuantity > 0">
+                    <div class="flex gap-3">
+                        <span x-text="item.filmName"></span>
+                        <button class="plusButtonAdulte" @click="incrementFilmQuantity(item)">+</button>
+                        <p x-text="' Adulte ' + item.adulteQuantity + 'x'" class="inputValueAdulte"></p>
+                        <button class="minusButtonAdulte" @click="decrementFilmQuantity(item)">-</button>
+                        <button x-on:click="resetQuantity(item, 'adulteQuantity')" class="bg-red-500 py-1 px-3">Supprimer</button>
+                        <p x-text="(item.adulteQuantity * getFilmPrice(item.filmName, 'adultePrice')) + '€'"></p>
+                    </div>
+                </template>
+                <template x-if="item.etudiantQuantity > 0">
+                    <div class="flex gap-3">
+                        <span x-text="item.filmName"></span>
+                        <button class="plusButtonEtudiant" @click="incrementFilmQuantity(item)">+</button>
+                        <p x-text="' Etudiant ' + item.etudiantQuantity + 'x'" class="inputValueEtudiant"></p>
+                        <button class="minusButtonEtudiant" @click="decrementFilmQuantity(item)">-</button>
+                        <button x-on:click="resetQuantity(item, 'etudiantQuantity')" class="bg-red-500 py-1 px-3">Supprimer</button>
+                        <p x-text="(item.etudiantQuantity * getFilmPrice(item.filmName, 'etudiantPrice')) + '€'"></p>
+                    </div>
+                </template>
+                <template x-if="item.enfantQuantity > 0">
+                    <div class="flex gap-3">
+                        <span x-text="item.filmName"></span>
+                        <button class="plusButtonEnfant" @click="incrementFilmQuantity(item)">+</button>
+                        <p x-text="' Enfant ' + item.enfantQuantity + 'x'" class="inputValueEnfant"></p>
+                        <button class="minusButtonEnfant" @click="decrementFilmQuantity(item)">-</button>
+                        <button x-on:click="resetQuantity(item, 'enfantQuantity')" class="bg-red-500 py-1 px-3">Supprimer</button>
+                        <p x-text="(item.enfantQuantity * getFilmPrice(item.filmName, 'enfantPrice')) + '€'"></p>
+                    </div>
+                </template>
+                <template x-if="item.snackName && item.snackQuantity > 0">
+                    <div class="flex gap-3">
+                        <span x-text="item.snackName + (item.largeBool ? ' Grand format ' : ' Petit format ')"></span>
+                        <button class="plusButton" @click="incrementSnackQuantity(item)">+</button>
+                        <p x-text=" item.snackQuantity + 'x'" class="inputValue"></p>
+                        <button class="minusButton" @click="decrementSnackQuantity(item)">-</button>
+                        <button class="bg-red-500 py-1 px-3">Supprimer</button>
+                        <p x-text=" (item.snackQuantity * item.snackPrice) + '€'"></p>
+                    </div>
+                </template>
+            </div>
+        </template>
+    </div>
 </body>
 </html>

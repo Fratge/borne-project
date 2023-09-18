@@ -67,7 +67,7 @@ const app = () => {
                     total += item.snackPrice * item.snackQuantity;
                 }
             }
-            return total.toFixed(2) + ' €';
+            return total.toFixed(2);
         },
         
 
@@ -112,27 +112,98 @@ const app = () => {
             console.log(this.panierUser);
         },
 
-        decrementSnackQuantity(snack) {
-            if (this.snackQuantity > 0) {
-                this.snackQuantity--;
-                const existingItemIndex = this.panierUser.findIndex(item => 
-                    item.snackName === snack.snackName && item.largeBool === snack.largeBool
-                );
-        
-                if (existingItemIndex !== -1) {
-                    this.panierUser[existingItemIndex].snackQuantity--;
-                    this.setPanierUser();
-                }
-            }
-        },
-
         getSnackPrice(snack){
             if (snack.largeBool === false) {
                 console.log(snack.smallFormat);
                 return snack.smallFormat;
             }
             return snack.largeFormat
-        }
+        },
+
+        decrementSnackQuantity(snack) {
+            const existingItemIndex = this.panierUser.findIndex(item => 
+                item.snackName === snack.snackName && item.largeBool === snack.largeBool
+            );
+        
+            if (existingItemIndex !== -1) {
+                if (this.panierUser[existingItemIndex].snackQuantity > 0) {
+                    this.panierUser[existingItemIndex].snackQuantity--;
+        
+                    if (this.panierUser[existingItemIndex].snackQuantity === 0) {
+                        this.panierUser.splice(existingItemIndex, 1);
+                    }
+                }
+            }        
+            this.setPanierUser();
+        },
+        
+
+        incrementSnackQuantity(snack) {
+            const existingItemIndex = this.panierUser.findIndex(item => 
+                item.snackName === snack.snackName && item.largeBool === snack.largeBool
+            );
+        
+            if (existingItemIndex !== -1) {
+                this.panierUser[existingItemIndex].snackQuantity++;
+            } else {
+                let snackPrice = snack.largeFormat;
+                if (snack.largeBool === false) {
+                    snackPrice = snack.smallFormat;
+                }
+        
+                const newItem = {
+                    snackName: snack.snackName,
+                    largeBool: snack.largeBool,
+                    snackPrice: snackPrice,
+                    snackQuantity: 1, 
+                };
+        
+                this.panierUser.push(newItem);
+            }
+        
+            this.setPanierUser();
+        },
+        
+        incrementFilmQuantity(film) {
+            const existingItemIndex = this.panierUser.findIndex(item => item.filmName === film.filmName);
+            
+            if (existingItemIndex !== -1) {
+                this.panierUser[existingItemIndex].adulteQuantity++;
+                this.panierUser[existingItemIndex].etudiantQuantity++;
+                this.panierUser[existingItemIndex].enfantQuantity++;
+            } else {
+                const newItem = {
+                    filmName: film.filmName,
+                    adulteQuantity: 1,
+                    etudiantQuantity: 1,
+                    enfantQuantity: 1,
+                };
+                
+                this.panierUser.push(newItem);
+            }
+        
+            this.setPanierUser();
+        },
+        
+        decrementFilmQuantity(film) {
+            const existingItemIndex = this.panierUser.findIndex(item => item.filmName === film.filmName);
+        
+            if (existingItemIndex !== -1) {
+                this.panierUser[existingItemIndex].adulteQuantity--;
+                this.panierUser[existingItemIndex].etudiantQuantity--;
+                this.panierUser[existingItemIndex].enfantQuantity--;
+        
+                if (this.panierUser[existingItemIndex].adulteQuantity <= 0 &&
+                    this.panierUser[existingItemIndex].etudiantQuantity <= 0 &&
+                    this.panierUser[existingItemIndex].enfantQuantity <= 0) {
+                        this.panierUser.splice(existingItemIndex, 1);
+                }
+            }
+        
+            this.setPanierUser();
+        },
+        
+        
         
 
     }
