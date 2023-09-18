@@ -45,6 +45,11 @@ const app = () => {
             this.setPanierUser();
         },
 
+        resetPanier(){
+            this.panierUser = []; 
+            this.setPanierUser();
+        },
+
         setPanierUser() {
             localStorage.setItem("panierUser", JSON.stringify(this.panierUser));
             console.log(this.panierUser)
@@ -200,7 +205,9 @@ const app = () => {
             this.setPanierUser();
         },
         
-        
+        redirectAccueil(){
+            window.location.href='./accueil.html'
+        }
         
 
     }

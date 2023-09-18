@@ -21,10 +21,10 @@
     <nav class="w-full h-full absolute flex flex-col-reverse">
      
         <div x-data="{ open: false }" class="  sticky bottom-[0vh] z-20 flex flex-col gap-[32px] ">
-            <div class="flex bg-blanc w-fit titre2 text-noir border-solid border-[4px] border-noir items-center gap-[32px] px-[16px] rounded-[16px] ml-[56px]">
+            <a href="index.html" @click="resetPanier()" class="flex bg-blanc w-fit titre2 text-noir border-solid border-[4px] border-noir items-center gap-[32px] px-[16px] rounded-[16px] ml-[56px]">
                 <i class="bi bi-x-circle text-[66px]"></i>
                 <p>Annuler la commande</p>
-            </div>
+            </a>
             <div class="bg-blanc flex items-center h-[214px] gap-[124px] px-[56px] border-t-solid border-t-noir border-t-[4px]">
                 <svg xmlns="http://www.w3.org/2000/svg" width="285" height="109" viewBox="0 0 285 109" fill="none">
                     <g clip-path="url(#clip0_46_51)">
@@ -108,7 +108,7 @@
                     </div>
                     <button x-on:click="open = ! open" class=" rounded-lg text-noir text-8xl"><i class="bi bi-cart2"></i></button>
                 </div>
-                <a href="index.html" class="text-rose_fonce text-8xl"><i class="bi bi-arrow-90deg-left"></i></a>
+                <a href="accueil.html" class="text-rose_fonce text-8xl"><i class="bi bi-arrow-90deg-left"></i></a>
             </div>
        
         
