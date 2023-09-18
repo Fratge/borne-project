@@ -20,6 +20,7 @@
 .titre4{
     @apply text-titre4 font-sans font-bold;
 }
+
 .titre3_extrabold{
     @apply text-titre3 font-sans font-extrabold;
 }
