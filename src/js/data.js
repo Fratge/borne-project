@@ -45,7 +45,7 @@ const filmsList = [
         adultePrice: 18,
         etudiantPrice: 8,
         enfantPrice: 4,
-        filmImage: "./src/img/films/temps_ete.avif"
+        filmImage: "./src/img/films/temps_ete.jpg"
     },
 ];
 
