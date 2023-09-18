@@ -14,17 +14,17 @@ function animate(carre) {
     let baseX = rect.left;
     carre.animate(
         [
-            {
-                top:baseY+'px',
-                left: baseX+'px'
-            },
-            {
-                top:baseY+(Math.random*1920)+'px',
-                left:baseX+(Math.random*1080)+'px',
-            }
+            {transform:"translateX("+baseX+"px) translateY("+baseY+"px)"},
+            {transform:"translateX("+Math.random()*1080/2+"px) translateY("+Math.random()*1920/2+"px)"},
+            {transform:"translateX("+Math.random()*1080/2+"px) translateY("+Math.random()*1920/2+"px)"},
+            {transform:"translateX("+Math.random()*1080/2+"px) translateY("+Math.random()*1920/2+"px)"},
+            {transform:"translateX("+Math.random()*1080/2+"px) translateY("+Math.random()*1920/2+"px)"},
+            {transform:"translateX("+baseX+"px) translateY("+baseY+"px)"},
         ],
         {
-            duration : 500,
+            duration : 9000,
+            iterations: Infinity,
+      
         }
     )
 }
