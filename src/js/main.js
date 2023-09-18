@@ -50,7 +50,7 @@ const app = () => {
             console.log(this.panierUser)
         },
 
-        calculateTotal() {
+        calculateTotalNoTaxes() {
             let total = 0;
         
             for (const item of this.panierUser) {
@@ -164,34 +164,31 @@ const app = () => {
             this.setPanierUser();
         },
         
-        incrementFilmQuantity(film) {
+        incrementFilmQuantity(film, ticketType) {
             const existingItemIndex = this.panierUser.findIndex(item => item.filmName === film.filmName);
-            
-            if (existingItemIndex !== -1) {
-                this.panierUser[existingItemIndex].adulteQuantity++;
-                this.panierUser[existingItemIndex].etudiantQuantity++;
-                this.panierUser[existingItemIndex].enfantQuantity++;
-            } else {
+        
+            if (existingItemIndex !== -1 && ['adulteQuantity', 'etudiantQuantity', 'enfantQuantity'].includes(ticketType)) {
+                this.panierUser[existingItemIndex][ticketType]++;
+            } else if (existingItemIndex === -1) {
                 const newItem = {
                     filmName: film.filmName,
-                    adulteQuantity: 1,
-                    etudiantQuantity: 1,
-                    enfantQuantity: 1,
+                    adulteQuantity: 0,
+                    etudiantQuantity: 0,
+                    enfantQuantity: 0,
                 };
-                
+                newItem[ticketType] = 1;
                 this.panierUser.push(newItem);
             }
-        
+            
             this.setPanierUser();
         },
         
-        decrementFilmQuantity(film) {
+        
+        decrementFilmQuantity(film, ticketType) {
             const existingItemIndex = this.panierUser.findIndex(item => item.filmName === film.filmName);
         
-            if (existingItemIndex !== -1) {
-                this.panierUser[existingItemIndex].adulteQuantity--;
-                this.panierUser[existingItemIndex].etudiantQuantity--;
-                this.panierUser[existingItemIndex].enfantQuantity--;
+            if (existingItemIndex !== -1 && this.panierUser[existingItemIndex][ticketType] > 0) {
+                this.panierUser[existingItemIndex][ticketType]--;
         
                 if (this.panierUser[existingItemIndex].adulteQuantity <= 0 &&
                     this.panierUser[existingItemIndex].etudiantQuantity <= 0 &&
