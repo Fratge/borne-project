@@ -12,7 +12,7 @@ module.exports = {
         ]
       },
       fontSize:{
-        titre1:['128px','auto'],
+        titre1:['80px','auto'],
         titre2:['40px','auto'],
         titre3:['24px','auto'],
         titre4:['20px','auto'],
