@@ -638,6 +638,14 @@ video {
   top: 800px;
 }
 
+.top-\[\] {
+  top: ;
+}
+
+.top-\[124px\] {
+  top: 124px;
+}
+
 .z-0 {
   z-index: 0;
 }
@@ -1072,6 +1080,10 @@ video {
 
 .self-end {
   align-self: flex-end;
+}
+
+.self-center {
+  align-self: center;
 }
 
 .overflow-hidden {

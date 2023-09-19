@@ -6,7 +6,7 @@ boutons.addEventListener("click",function(){
     chargement.classList.remove("hidden");
     if(!chargement.classList.contains("hidden")){
         let t = setTimeout(function(){
-            window.location.href = "../Merci.html";
+            window.location.href = "./Merci.html";
             clearTimeout(t);
         },3000);
     }
