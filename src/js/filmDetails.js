@@ -6,6 +6,9 @@ if (selectedFilm) {
   console.log(selectedFilm)
   filmId.innerText = selectedFilm.id ;
   filmName.innerText = selectedFilm.filmName;
+  filmSynopsis.innerText = selectedFilm.synopsis;
+  filmHoraire.innerText = selectedFilm.horaire;
+  filmDuree.innerText = selectedFilm.duree;
   filmPriceAdulte.innerText = 'Prix adulte : ' + selectedFilm.adultePrice + ' €';
   filmPriceEtudiant.innerText = 'Prix etudiant : ' + selectedFilm.etudiantPrice + ' €';
   filmPriceEnfant.innerText = 'Prix enfant : ' + selectedFilm.enfantPrice + ' €';
@@ -13,7 +16,6 @@ if (selectedFilm) {
 } else {
   filmId.innerText = "Aucun film sélectionné";
 }
-
 
 // Compteur de billets pour les adultes
 const plusButtonAdulte = document.getElementById("plusButtonAdulte");
@@ -77,11 +79,15 @@ const reserverButton = document.getElementById("reserver");
 const snacksContainer = document.getElementById("snacksContainer");
 
 reserverButton.addEventListener('click', function(){
-  inputValueAdulte.textContent = "0";
-  inputValueEnfant.textContent = "0";
-  inputValueEtudiant.textContent = "0";
+  if (parseInt(inputValueAdulte.textContent) === 0 && parseInt(inputValueEnfant.textContent) === 0 && parseInt(inputValueEtudiant.textContent) === 0) {
+    return;
+  }else{
+    inputValueAdulte.textContent = "0";
+    inputValueEnfant.textContent = "0";
+    inputValueEtudiant.textContent = "0";
+    snacksContainer.classList.remove('hidden');
+  }
 
-  snacksContainer.classList.remove('hidden');
 });
 
 
