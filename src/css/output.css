@@ -7,7 +7,6 @@
 2. Allow adding a border to an element by just adding a border-width. (https://github.com/tailwindcss/tailwindcss/pull/116)
 */
 
-@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&display=swap');
 *,
 ::before,
 ::after {
@@ -639,6 +638,14 @@ video {
   top: 800px;
 }
 
+.top-\[\] {
+  top: ;
+}
+
+.top-\[124px\] {
+  top: 124px;
+}
+
 .z-0 {
   z-index: 0;
 }
@@ -1045,6 +1052,10 @@ video {
 
 .self-end {
   align-self: flex-end;
+}
+
+.self-center {
+  align-self: center;
 }
 
 .overflow-hidden {
