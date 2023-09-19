@@ -20,9 +20,58 @@
         <div class="carre2 absolute rounded-full left-[-125px] top-[1171px] w-[1228px] h-[915px] bg-vert z-0 blur-[200px]"></div>
     </div>
     <nav class="w-full h-full absolute flex flex-col-reverse">
+        <div id="snacksContainer" class="z-20 top-[124px] self-center flex flex-col h-auto hidden absolute top-[360px] w-[83%] bg-blanc rounded-[16px] border-solid border-rose_fonce border-[4px] mb-[460px]">
+            <div class="px-[16px] py-[8px] border-b-rose_fonce border-b-solid border-b-[4px]">
+                <h2 class="titre2">Friandises</h2>
+            </div>
+            <div class="flex justify-between border-b-solid border-b-rose_fonce border-b-[4px] p-[16px] gap-[32px]">
+                <template x-for="snack in snacksList">
+                    <div class="rounded-[16px] overflow-hidden border-rose_fonce border-[4px] border-solid">
+                      
+                        <div class="h-[447px] w-[271px] flex justify-center overflow-hidden border-b-solid border-b-rose_fonce border-b-[2px]">
+                            <img :src="snack.snackImage" class="h-full max-w-none">
+                        </div>
+                       
+                        <div class="p-[24px] flex flex-col gap-[16px]">
+                            <div class="flex justify-between items-center  gap-[32px]">
+                                <div class="w-full flex flex-col gap-[8px]">
+                                    <h3 class="titre3" x-text="snack.snackName"></h3>
+                                    <div class="h-[2px] w-full bg-rose_fonce"></div>
+                                    <p class="titre3_extrabold" x-text="'' + (snack.largeBool ? snack.largeFormat : snack.smallFormat) + '$'" id="snackPrice"></p>
+                                </div>
+                                <div class="flex flex-col titre2 rounded-[16px] border-rose_fonce border-[2px] border-solid overflow-hidden w-[96px]">
+                                    <button :style="{'background': snack.largeBool === false ? '#FDC835' : ''}" @click="background(snack)" class="small-format border-b-rose_fonce border-b-solid border-b-[2px] ">S</button>
+                                    <button :style="{'background': snack.largeBool === true ? '#FDC835' : ''}" @click="background(snack)" class="large-format  ">L</button>
+                                </div>
+                            </div>
+                            <div class="flex border-solid border-rose_fonce border-[4px] px-[8px] titre2 justify-between items-center rounded-[16px] h-[64px] p-[8px]  gap-[16px]">
+                                <button class="plusButton" @click="addToPanierSnack(snack); snackQuantity++"><i class="bi bi-plus-lg"></i></button>
+                                <div class="w-[2px] bg-rose_fonce h-full"></div>
+                                <p class="inputValue">0</p>
+                                <div class="w-[2px] bg-rose_fonce h-full"></div>
+                                <button class="minusButton" @click="decrementSnackQuantity(snack)"><i class="bi bi-dash"></i></button>
+                            </div>
      
+                        </div>
+                    </div>
+                </template>
+            </div>
+            <div class="flex flex-wrap gap-[16px] p-[16px]">
+                <template x-for="(item, index) in panierUser">
+                    <template x-if="item.snackName && item.snackQuantity > 0">
+                        <div class="p-[8px] border-rose_fonce border-[4px] border-solid rounded-[16px]">
+                            <span class="titre3"  x-text="'' + item.snackName + ' x' + item.snackQuantity + ' ' + (item.largeBool ? '| L |' : '| S |') + ' ' + (item.snackQuantity * item.snackPrice) + '$'"></span>
+    
+                        </div>
+                    </template>
+                </template>
+            </div>
+            <div class="flex gap-[16px] p-[16px] border-t-rose_fonce border-t-solid border-t-[4px]">
+                <a class="p-[16px] bg-blanc titre2 rounded-[16px] border-solid border-rose_fonce border-[4px]" href="panier.html">Retour au paiement</a>
+            </div>
+        </div>
         <div x-data="{ open: false }" class="  sticky bottom-[0vh] z-20 flex flex-col gap-[32px] ">
-            <a href="index.html" @click="resetPanier()" class="flex bg-blanc w-fit titre2 text-noir border-solid border-[4px] border-noir items-center gap-[32px] px-[16px] rounded-[16px] ml-[56px]">
+            <a href="index.html" @click="resetPanier()" class="flex bg-blanc w-fit titre2 text-vertfonce border-solid border-[4px] border-noir items-center gap-[32px] px-[16px] rounded-[16px] ml-[56px]">
                 <i class="bi bi-x-circle text-[66px]"></i>
                 <p>Annuler la commande</p>
             </a>
@@ -114,7 +163,8 @@
                     </div>
                     <button x-on:click="open = ! open" class=" rounded-lg text-noir text-8xl"><i class="bi bi-cart2"></i></button>
                 </div>
-                <a href="accueil.html" class="text-rose_fonce text-8xl"><i class="bi bi-arrow-90deg-left"></i></a>
+                <a href="accueil.html" class="text-vertfonce text-8xl"><i class="bi bi-arrow-90deg-left"></i></a>
+                <a href="accueil.html" class="text-vertfonce text-8xl"><i class="bi bi-house"></i></a>
             </div>
        
         
@@ -222,6 +272,7 @@
             <button class="p-[16px] bg-blanc titre2 rounded-[16px] border-solid border-rose_fonce border-[4px]" id="reserver">Friandises+</button>
             <a  class="p-[16px] bg-blanc titre2 rounded-[16px] border-solid border-rose_fonce border-[4px]" href="./Paiement.html">Paiement</a>
         </div>
+       
     </main>
 
 </body>
