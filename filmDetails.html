@@ -7,6 +7,7 @@
     <script defer src="./src/js/AnimationCarre.js"></script>
     <script src="./src/js/data.js"></script>
     <script src="./src/js/main.js"></script>
+    <script defer src="./src/js/veille.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <title>Détails du film</title>
@@ -69,45 +70,50 @@
                     <div x-show="open" class="text-noir flex flex-col absolute mb-[64px] bottom-[25px] bg-blanc w-[316px] p-[16px] rounded-[16px] border-solid border-noir border-[4px]">
                         <p class="titre3">Contenu du panier:</p>
                         <div class="w-full bg-noir h-[4px]"></div>
-                        <template x-for="(item, index) in panierUser">
-                            <div class="flex flex-col pt-[1px] gap-3">
-                                <template x-if="item.adulteQuantity > 0">
-                                    <div class="flex items-center titre4 gap-[16px] border-b-solid border-b-noir border-b-[2px] ">
-                                        <div class="flex items-center gap-[16px] ">
-                                            <button x-on:click="resetQuantity(item, 'adulteQuantity')" class=" text-noir"><i class="bi bi-x-circle text-[32px]"></i></button>
-                                            <span x-text="item.filmName + ' Adulte x' + item.adulteQuantity + ' ' + (item.adulteQuantity * getFilmPrice(item.filmName, 'adultePrice')) + '€'"></span>
+                        <div x-show="!checkIfPanierVide()">
+                            <template x-for="(item, index) in panierUser">
+                                <div class="flex flex-col pt-[1px] gap-3">
+                                    <template x-if="item.adulteQuantity > 0">
+                                        <div class="flex items-center titre4 gap-[16px] border-b-solid border-b-noir border-b-[2px] ">
+                                            <div class="flex items-center gap-[16px] ">
+                                                <button x-on:click="resetQuantity(item, 'adulteQuantity')" class=" text-noir"><i class="bi bi-x-circle text-[32px]"></i></button>
+                                                <span x-text="item.filmName + ' Adulte x' + item.adulteQuantity + ' ' + (item.adulteQuantity * getFilmPrice(item.filmName, 'adultePrice')) + '€'"></span>
+                                            </div>
                                         </div>
-                                    </div>
-                                </template>
-                                <template x-if="item.etudiantQuantity > 0">
-                                    <div class="flex items-center titre4 gap-[16px] border-b-solid border-b-noir border-b-[2px] ">
-                                        <div class="flex items-center gap-[16px] ">
-                                            <button x-on:click="resetQuantity(item, 'etudiantQuantity')" class=" text-noir"><i class="bi bi-x-circle text-[32px]"></i></button>
-                                            <span x-text="item.filmName + ' Etudiant x' + item.etudiantQuantity + ' ' + (item.etudiantQuantity * getFilmPrice(item.filmName, 'etudiantPrice')) + '€'"></span>
+                                    </template>
+                                    <template x-if="item.etudiantQuantity > 0">
+                                        <div class="flex items-center titre4 gap-[16px] border-b-solid border-b-noir border-b-[2px] ">
+                                            <div class="flex items-center gap-[16px] ">
+                                                <button x-on:click="resetQuantity(item, 'etudiantQuantity')" class=" text-noir"><i class="bi bi-x-circle text-[32px]"></i></button>
+                                                <span x-text="item.filmName + ' Etudiant x' + item.etudiantQuantity + ' ' + (item.etudiantQuantity * getFilmPrice(item.filmName, 'etudiantPrice')) + '€'"></span>
+                                            </div>
                                         </div>
-                                    </div>
-                                </template> 
-                                <template x-if="item.enfantQuantity > 0">
-                                    <div class="flex items-center titre4 gap-[16px] border-b-solid border-b-noir border-b-[2px] ">
-                                        <div class="flex items-center gap-[16px] ">
-                                            <button x-on:click="resetQuantity(item, 'enfantQuantity')" class=" text-noir"><i class="bi bi-x-circle text-[32px]"></i></button>
-                                            <span x-text="item.filmName + ' Enfant x' + item.enfantQuantity + ' ' + (item.enfantQuantity * getFilmPrice(item.filmName, 'enfantPrice')) + '€'"></span>
+                                    </template> 
+                                    <template x-if="item.enfantQuantity > 0">
+                                        <div class="flex items-center titre4 gap-[16px] border-b-solid border-b-noir border-b-[2px] ">
+                                            <div class="flex items-center gap-[16px] ">
+                                                <button x-on:click="resetQuantity(item, 'enfantQuantity')" class=" text-noir"><i class="bi bi-x-circle text-[32px]"></i></button>
+                                                <span x-text="item.filmName + ' Enfant x' + item.enfantQuantity + ' ' + (item.enfantQuantity * getFilmPrice(item.filmName, 'enfantPrice')) + '€'"></span>
+                                            </div>
                                         </div>
-                                    </div>
-                                </template>  
-                                <template x-if="item.snackName && item.snackQuantity > 0">
-                                    <div class="flex items-center titre4 gap-[16px] border-b-solid border-b-noir border-b-[2px] ">
-                                        <div class="flex items-center gap-[16px] ">
-                                            <button x-on:click="resetQuantity(item, 'snackQuantity')" class=" text-noir"><i class="bi bi-x-circle text-[32px]"></i></button>
-                                            <span x-text="item.snackName + ' x' + item.snackQuantity + (item.largeBool ? ' Grand format ' : ' Petit format ') + (item.snackQuantity * item.snackPrice) + '€'"></span>
+                                    </template>  
+                                    <template x-if="item.snackName && item.snackQuantity > 0">
+                                        <div class="flex items-center titre4 gap-[16px] border-b-solid border-b-noir border-b-[2px] ">
+                                            <div class="flex items-center gap-[16px] ">
+                                                <button x-on:click="resetQuantity(item, 'snackQuantity')" class=" text-noir"><i class="bi bi-x-circle text-[32px]"></i></button>
+                                                <span x-text="item.snackName + ' x' + item.snackQuantity + (item.largeBool ? ' Grand format ' : ' Petit format ') + (item.snackQuantity * item.snackPrice) + '€'"></span>
+                                            </div>
                                         </div>
-                                    </div>
-                                </template> 
-                            </div>
-                        </template>
-                        <div class="w-full bg-noir h-[4px]"></div>
-                        <p class="titre3">Total panier: <span x-text="calculateTotal()"></span> €</p>
-                        <a href="panier.html" class="titre3 p-[8px] border-[2px] border-solid border-rose_fonce rounded-[16px]">Voir le panier</a>
+                                    </template> 
+                                </div>
+                            </template>
+                            <div class="w-full bg-noir h-[4px]"></div>
+                            <p class="titre3">Total panier: <span x-text="calculateTotalNoTaxes()"></span> €</p>
+                            <a href="panier.html" class="titre3 p-[8px] border-[2px] border-solid border-rose_fonce rounded-[16px]">Voir le panier</a>
+                        </div>
+                        <div x-show="checkIfPanierVide()">
+                            <p class="titre3 mt-4">Votre panier est vide</p>
+                        </div>
                     </div>
                     <button x-on:click="open = ! open" class=" rounded-lg text-noir text-8xl"><i class="bi bi-cart2"></i></button>
                 </div>

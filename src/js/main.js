@@ -84,6 +84,15 @@ const app = () => {
             return 0;
         },
 
+        checkIfPanierVide() {
+            for (const item of this.panierUser) {
+                if (item.adulteQuantity >= 1 || item.etudiantQuantity >= 1 || item.enfantQuantity >= 1) {
+                    return false;
+                }
+            }
+            return true;
+        },
+
         background(snack){
             snack.largeBool = !snack.largeBool;
         },
@@ -141,7 +150,6 @@ const app = () => {
             }        
             this.setPanierUser();
         },
-        
 
         incrementSnackQuantity(snack) {
             const existingItemIndex = this.panierUser.findIndex(item => 
@@ -212,3 +220,5 @@ const app = () => {
 
     }
 }
+
+const appInstance = app();
