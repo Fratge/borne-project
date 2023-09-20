@@ -86,7 +86,7 @@ const app = () => {
 
         checkIfPanierVide() {
             for (const item of this.panierUser) {
-                if (item.adulteQuantity >= 1 || item.etudiantQuantity >= 1 || item.enfantQuantity >= 1) {
+                if (item.adulteQuantity >= 1 || item.etudiantQuantity >= 1 || item.enfantQuantity >= 1 || item.snackQuantity >= 1) {
                     return false;
                 }
             }
