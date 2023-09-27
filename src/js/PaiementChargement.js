@@ -18,6 +18,7 @@ function hidePaiementAndShowChargement() {
     if (!chargement.classList.contains("hidden")) {
         let t = setTimeout(function() {
             window.location.href = "./Merci.html";
+            appInstance.resetPanier();
             clearTimeout(t);
         }, 3000);
     }
