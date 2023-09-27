@@ -20,15 +20,15 @@
         <div class="carre2 absolute rounded-full left-[-34px] top-[800px] w-[1125px] h-[915px] bg-rose z-0 blur-[200px]"></div>
         <div class="carre3 absolute rounded-full left-[-274px] top-[1026px] w-[861px] h-[700px] bg-jaune z-0 blur-[200px]"></div>
     </div>
-    <nav class="w-full h-full absolute flex flex-col-reverse">
+    <nav class="w-full h-full absolute flex flex-col-reverse overflow-y-hidden">
      
-        <div x-data="{ open: false }" class="  sticky bottom-[0vh] z-20 flex flex-col gap-[32px] ">
-            <a href="index.html" @click="resetPanier()" class="flex bg-blanc w-fit titre2 text-noir border-solid border-[4px] border-noir items-center gap-[32px] px-[16px] rounded-[16px] ml-[56px]">
-                <i class="bi bi-x-circle text-[66px]"></i>
+        <div x-data="{ open: false }" class="  sticky bottom-[0vh] z-20 flex flex-col gap-[32px]">
+            <a href="index.html" @click="resetPanier()" class="flex bg-blanc text-titre3 lg:text-titre2 text-noir border-solid border-[4px] border-noir items-center gap-5 lg:gap-[32px] px-[16px] rounded-[16px] ml-7 lg:ml-[56px] h-12 w-[320px] lg:h-auto lg:w-[550px]">
+                <i class="bi bi-x-circle text-[25px] lg:text-[66px]"></i>
                 <p>Annuler la commande</p>
             </a>
-            <div class="bg-blanc flex items-center h-[214px] gap-[124px] px-[56px] border-t-solid border-t-noir border-t-[4px]">
-                <svg xmlns="http://www.w3.org/2000/svg" width="285" height="109" viewBox="0 0 285 109" fill="none">
+            <div class="bg-blanc flex items-center gap-7 lg:h-[214px] lg:gap-[124px]  px-8 lg:px-[56px] border-t-solid border-t-noir border-t-[4px] h-[100px]">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-[150px] h-[250px] lg:w-[285px] lg:h-[109px]" viewBox="0 0 285 109" fill="none">
                     <g clip-path="url(#clip0_46_51)">
                     <path d="M225.22 65.0815H244.277L280.57 28.8656L260.978 9.31543L225.22 44.9905V65.0815Z" fill="#082431"/>
                     <path d="M264.648 39.7941L250.019 25.1958L229.664 45.507L244.294 60.1053L264.648 39.7941Z" fill="#FDC835"/>
@@ -65,8 +65,8 @@
                     </defs>
                     </svg>
                 <div class="relative">
-                    <div x-show="open" class="text-noir flex flex-col absolute mb-[64px] bottom-[25px] bg-blanc w-[316px] p-[16px] rounded-[16px] border-solid border-noir border-[4px]">
-                        <p class="titre3">Contenu du panier:</p>
+                    <div x-show="open" class="text-noir flex flex-col absolute mb-[64px] bottom-[19px] left-[-145px] lg:left-auto lg:bottom-[25px] bg-blanc w-[316px] p-[16px] rounded-[16px] border-solid border-noir border-[4px]">
+                        <p class="text-titre4 font-bold lg:text-titre3">Contenu du panier:</p>
                         <div class="w-full bg-noir h-[4px]"></div>
                         <div x-show="!checkIfPanierVide()">
                             <template x-for="(item, index) in panierUser">
@@ -75,7 +75,7 @@
                                         <div class="flex items-center titre4 gap-[16px] border-b-solid border-b-noir border-b-[2px] ">
                                             <div class="flex items-center gap-[16px] ">
                                                 <button x-on:click="resetQuantity(item, 'adulteQuantity')" class=" text-noir"><i class="bi bi-x-circle text-[32px]"></i></button>
-                                                <span x-text="item.filmName + ' Adulte x' + item.adulteQuantity + ' ' + (item.adulteQuantity * getFilmPrice(item.filmName, 'adultePrice')) + '€'"></span>
+                                                <span x-text="item.filmName + ' Adulte x' + item.adulteQuantity + ' ' + (item.adulteQuantity * getFilmPrice(item.filmName, 'adultePrice')) + '$'"></span>
                                             </div>
                                         </div>
                                     </template>
@@ -83,7 +83,7 @@
                                         <div class="flex items-center titre4 gap-[16px] border-b-solid border-b-noir border-b-[2px] ">
                                             <div class="flex items-center gap-[16px] ">
                                                 <button x-on:click="resetQuantity(item, 'etudiantQuantity')" class=" text-noir"><i class="bi bi-x-circle text-[32px]"></i></button>
-                                                <span x-text="item.filmName + ' Etudiant x' + item.etudiantQuantity + ' ' + (item.etudiantQuantity * getFilmPrice(item.filmName, 'etudiantPrice')) + '€'"></span>
+                                                <span x-text="item.filmName + ' Etudiant x' + item.etudiantQuantity + ' ' + (item.etudiantQuantity * getFilmPrice(item.filmName, 'etudiantPrice')) + '$'"></span>
                                             </div>
                                         </div>
                                     </template> 
@@ -91,7 +91,7 @@
                                         <div class="flex items-center titre4 gap-[16px] border-b-solid border-b-noir border-b-[2px] ">
                                             <div class="flex items-center gap-[16px] ">
                                                 <button x-on:click="resetQuantity(item, 'enfantQuantity')" class=" text-noir"><i class="bi bi-x-circle text-[32px]"></i></button>
-                                                <span x-text="item.filmName + ' Enfant x' + item.enfantQuantity + ' ' + (item.enfantQuantity * getFilmPrice(item.filmName, 'enfantPrice')) + '€'"></span>
+                                                <span x-text="item.filmName + ' Enfant x' + item.enfantQuantity + ' ' + (item.enfantQuantity * getFilmPrice(item.filmName, 'enfantPrice')) + '$'"></span>
                                             </div>
                                         </div>
                                     </template>  
@@ -99,42 +99,42 @@
                                         <div class="flex items-center titre4 gap-[16px] border-b-solid border-b-noir border-b-[2px] ">
                                             <div class="flex items-center gap-[16px] ">
                                                 <button x-on:click="resetQuantity(item, 'snackQuantity')" class=" text-noir"><i class="bi bi-x-circle text-[32px]"></i></button>
-                                                <span x-text="item.snackName + ' x' + item.snackQuantity + (item.largeBool ? ' Grand format ' : ' Petit format ') + (item.snackQuantity * item.snackPrice) + '€'"></span>
+                                                <span x-text="item.snackName + ' x' + item.snackQuantity + (item.largeBool ? ' Grand format ' : ' Petit format ') + (item.snackQuantity * item.snackPrice) + '$'"></span>
                                             </div>
                                         </div>
                                     </template> 
                                 </div>
                             </template>
                             <div class="w-full bg-noir h-[4px]"></div>
-                            <p class="titre3">Total panier: <span x-text="calculateTotalNoTaxes()"></span> €</p>
+                            <p class="text-titre4 my-3 font-bold lg:text-titre3">Total panier: <span x-text="calculateTotalNoTaxes()"></span> $</p>
                             <a href="panier.html" class="titre3 p-[8px] border-[2px] border-solid border-rose_fonce rounded-[16px]">Voir le panier</a>
                         </div>
                         <div x-show="checkIfPanierVide()">
-                            <p class="titre3 mt-4">Votre panier est vide</p>
+                            <p class="text-titre4 font-bold lg:text-titre3 mt-4">Votre panier est vide</p>
                         </div>
                     </div>
-                    <button x-on:click="open = ! open" class=" rounded-lg text-noir text-8xl"><i class="bi bi-cart2"></i></button>
+                    <button x-on:click="open = ! open" class=" rounded-lg text-noir text-4xl lg:text-8xl"><i class="bi bi-cart2"></i></button>
          
                 </div>
-                <a href="index.html" class="text-noir text-8xl"><i class="bi bi-arrow-90deg-left"></i></a>
-                <a href="index.html" class="text-noir text-8xl"><i class="bi bi-house"></i></a>
+                <a href="index.html" class="text-noir text-4xl lg:text-8xl"><i class="bi bi-arrow-90deg-left"></i></a>
+                <a href="index.html" class="text-noir text-4xl lg:text-8xl"><i class="bi bi-house"></i></a>
             </div>
         </div>
     </nav>
 
-    <main class="px-[96px] h-[200%]  overflow-hidden  backdrop-blur-[100px] relative z-10 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHhtbG5zOnN2Z2pzPSJodHRwOi8vc3ZnanMuZGV2L3N2Z2pzIiB2aWV3Qm94PSIwIDAgNzAwIDcwMCIgd2lkdGg9IjcwMCIgaGVpZ2h0PSI3MDAiIG9wYWNpdHk9IjAuMjUiPjxkZWZzPjxmaWx0ZXIgaWQ9Im5ubm9pc2UtZmlsdGVyIiB4PSItMjAlIiB5PSItMjAlIiB3aWR0aD0iMTQwJSIgaGVpZ2h0PSIxNDAlIiBmaWx0ZXJVbml0cz0ib2JqZWN0Qm91bmRpbmdCb3giIHByaW1pdGl2ZVVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgY29sb3ItaW50ZXJwb2xhdGlvbi1maWx0ZXJzPSJsaW5lYXJSR0IiPgoJPGZlVHVyYnVsZW5jZSB0eXBlPSJmcmFjdGFsTm9pc2UiIGJhc2VGcmVxdWVuY3k9IjAuMTEyIiBudW1PY3RhdmVzPSI0IiBzZWVkPSIxNSIgc3RpdGNoVGlsZXM9InN0aXRjaCIgeD0iMCUiIHk9IjAlIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiByZXN1bHQ9InR1cmJ1bGVuY2UiPjwvZmVUdXJidWxlbmNlPgoJPGZlU3BlY3VsYXJMaWdodGluZyBzdXJmYWNlU2NhbGU9IjgiIHNwZWN1bGFyQ29uc3RhbnQ9IjAuNyIgc3BlY3VsYXJFeHBvbmVudD0iMjAiIGxpZ2h0aW5nLWNvbG9yPSIjZmZmZmZmIiB4PSIwJSIgeT0iMCUiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGluPSJ0dXJidWxlbmNlIiByZXN1bHQ9InNwZWN1bGFyTGlnaHRpbmciPgogICAgCQk8ZmVEaXN0YW50TGlnaHQgYXppbXV0aD0iMyIgZWxldmF0aW9uPSI4OCI+PC9mZURpc3RhbnRMaWdodD4KICAJPC9mZVNwZWN1bGFyTGlnaHRpbmc+CiAgCjwvZmlsdGVyPjwvZGVmcz48cmVjdCB3aWR0aD0iNzAwIiBoZWlnaHQ9IjcwMCIgZmlsbD0idHJhbnNwYXJlbnQiPjwvcmVjdD48cmVjdCB3aWR0aD0iNzAwIiBoZWlnaHQ9IjcwMCIgZmlsbD0iI2ZmZmZmZiIgZmlsdGVyPSJ1cmwoI25ubm9pc2UtZmlsdGVyKSI+PC9yZWN0Pjwvc3ZnPg==')]">
-        <h1 class="text-blanc titre1 my-[104px] text-center scale-x-[192%] scale-y-[180%]" >Accueil</h1>
+    <main class="px-6 lg:px-[96px] h-[200%] overflow-x-hidden pb-56 lg:pb-0 overflow-scroll lg:overflow-hidden  backdrop-blur-[100px] relative z-10 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHhtbG5zOnN2Z2pzPSJodHRwOi8vc3ZnanMuZGV2L3N2Z2pzIiB2aWV3Qm94PSIwIDAgNzAwIDcwMCIgd2lkdGg9IjcwMCIgaGVpZ2h0PSI3MDAiIG9wYWNpdHk9IjAuMjUiPjxkZWZzPjxmaWx0ZXIgaWQ9Im5ubm9pc2UtZmlsdGVyIiB4PSItMjAlIiB5PSItMjAlIiB3aWR0aD0iMTQwJSIgaGVpZ2h0PSIxNDAlIiBmaWx0ZXJVbml0cz0ib2JqZWN0Qm91bmRpbmdCb3giIHByaW1pdGl2ZVVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgY29sb3ItaW50ZXJwb2xhdGlvbi1maWx0ZXJzPSJsaW5lYXJSR0IiPgoJPGZlVHVyYnVsZW5jZSB0eXBlPSJmcmFjdGFsTm9pc2UiIGJhc2VGcmVxdWVuY3k9IjAuMTEyIiBudW1PY3RhdmVzPSI0IiBzZWVkPSIxNSIgc3RpdGNoVGlsZXM9InN0aXRjaCIgeD0iMCUiIHk9IjAlIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiByZXN1bHQ9InR1cmJ1bGVuY2UiPjwvZmVUdXJidWxlbmNlPgoJPGZlU3BlY3VsYXJMaWdodGluZyBzdXJmYWNlU2NhbGU9IjgiIHNwZWN1bGFyQ29uc3RhbnQ9IjAuNyIgc3BlY3VsYXJFeHBvbmVudD0iMjAiIGxpZ2h0aW5nLWNvbG9yPSIjZmZmZmZmIiB4PSIwJSIgeT0iMCUiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGluPSJ0dXJidWxlbmNlIiByZXN1bHQ9InNwZWN1bGFyTGlnaHRpbmciPgogICAgCQk8ZmVEaXN0YW50TGlnaHQgYXppbXV0aD0iMyIgZWxldmF0aW9uPSI4OCI+PC9mZURpc3RhbnRMaWdodD4KICAJPC9mZVNwZWN1bGFyTGlnaHRpbmc+CiAgCjwvZmlsdGVyPjwvZGVmcz48cmVjdCB3aWR0aD0iNzAwIiBoZWlnaHQ9IjcwMCIgZmlsbD0idHJhbnNwYXJlbnQiPjwvcmVjdD48cmVjdCB3aWR0aD0iNzAwIiBoZWlnaHQ9IjcwMCIgZmlsbD0iI2ZmZmZmZiIgZmlsdGVyPSJ1cmwoI25ubm9pc2UtZmlsdGVyKSI+PC9yZWN0Pjwvc3ZnPg==')]">
+        <h1 class="titre3 my-9 text-blanc lg:text-titre1 lg:my-[104px] text-center scale-x-[192%] scale-y-[180%]" >Accueil</h1>
         <div class="flex flex-wrap justify-between ">
             <template x-for="film in filmsList">
-                <article class="mb-[24px] rounded-[16px] flex flex-col items-center bg-blanc border-noir border-solid border-[4px] font-sans overflow-hidden w-[281px]" x-on:click="redirectToFilmDetails(film)">
-                    <img :src="film.filmImage" class="h-[406px] max-w-none" alt="" class="h-56">
-                    <div class="w-full flex flex-col gap-[8px] px-[32px] py-[8px]">
-                        <h2 class="titre3" x-text="film.filmName"></h2>
+                <article class="w-[160px] mb-[24px] lg:h-auto rounded-[16px] flex flex-col items-center bg-blanc border-noir border-solid border-[4px] font-sans overflow-hidden lg:w-[281px]" x-on:click="redirectToFilmDetails(film)">
+                    <img :src="film.filmImage" class="h-[220px] lg:h-[406px] max-w-none" alt="">
+                    <div class="w-full flex flex-col gap-[8px] px-3 lg:px-[32px] py-[8px]">
+                        <h2 class="titre4 lg:text-titre3" x-text="film.filmName"></h2>
                         <div class="h-[2px] bg-black w-full"></div>
                         <span class="flex items-center justify-between">
-                            <h3 class="titre4">20h00 à 24h00</h3>
+                            <h3 class="text-[15px] font-bold lg:text-titre4" x-text="film.horaire"></h3>
                            
-                            <p class="titre3_extrabold" x-text="film.adultePrice + ' €'"></p>
+                            <p class="text-[15px] w-10 lg:w-auto font-bold lg:text-titre3" x-text="film.adultePrice + ' $'"></p>
                         </span>
                         
                     </div>

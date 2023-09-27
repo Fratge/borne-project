@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function(){
   const inputValues = document.querySelectorAll('.inputValue');
 
   plusButtons.forEach((plusButton, index) => {
-    const inputValue = inputValues[index];
+    const inputValue = inputValues[index] -1;
 
     plusButton.addEventListener("click", function() {
       let currentValue = parseInt(inputValue.textContent);
@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function(){
   });
 
   minusButtons.forEach((minusButton, index) => {
-    const inputValue = inputValues[index];
+    const inputValue = inputValues[index] -1;
 
     minusButton.addEventListener("click", function() {
       let currentValue = parseInt(inputValue.textContent);

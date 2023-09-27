@@ -9,15 +9,15 @@ if (selectedFilm) {
   filmSynopsis.innerText = selectedFilm.synopsis;
   filmHoraire.innerText = selectedFilm.horaire;
   filmDuree.innerText = selectedFilm.duree;
-  filmPriceAdulte.innerText = 'Prix adulte : ' + selectedFilm.adultePrice + ' €';
-  filmPriceEtudiant.innerText = 'Prix etudiant : ' + selectedFilm.etudiantPrice + ' €';
-  filmPriceEnfant.innerText = 'Prix enfant : ' + selectedFilm.enfantPrice + ' €';
+  filmPriceAdulte.innerText = 'Prix adulte : ' + selectedFilm.adultePrice + ' $';
+  filmPriceEtudiant.innerText = 'Prix etudiant : ' + selectedFilm.etudiantPrice + ' $';
+  filmPriceEnfant.innerText = 'Prix enfant : ' + selectedFilm.enfantPrice + ' $';
   filmImage.src = selectedFilm.filmImage;
 } else {
   filmId.innerText = "Aucun film sélectionné";
 }
 
-// Compteur de billets pour les adultes
+// Compteur de billets pour les adultes page filmDetails et page panier
 const plusButtonAdulte = document.getElementById("plusButtonAdulte");
 const minusButtonAdulte = document.getElementById("minusButtonAdulte");
 const inputValueAdulte = document.getElementById("inputValueAdulte");
@@ -36,7 +36,7 @@ minusButtonAdulte.addEventListener("click", function() {
   }
 });
 
-// Compteur de billets pour les étudiants
+// Compteur de billets pour les étudiants page filmDetails et page panier
 const plusButtonEtudiant = document.getElementById("plusButtonEtudiant");
 const minusButtonEtudiant = document.getElementById("minusButtonEtudiant");
 const inputValueEtudiant = document.getElementById("inputValueEtudiant");
@@ -55,7 +55,7 @@ minusButtonEtudiant.addEventListener("click", function() {
   }
 });
 
-// Compteur de billets pour les adultes
+// Compteur de billets pour les adultes page filmDetails et page panier
 const plusButtonEnfant = document.getElementById("plusButtonEnfant");
 const minusButtonEnfant = document.getElementById("minusButtonEnfant");
 const inputValueEnfant = document.getElementById("inputValueEnfant");
@@ -74,10 +74,16 @@ minusButtonEnfant.addEventListener("click", function() {
   }
 });
 
-// Snacks
+// Affichage des snacks
 const reserverButton = document.getElementById("reserver");
+const reserverButton2 = document.getElementById("reserver2");
 const snacksContainer = document.getElementById("snacksContainer");
+const filmContainer = document.getElementById("filmContainer");
+const billetsContainer = document.getElementById("billetsContainer");
 
+console.log(snacksContainer)
+
+// Au clique sur le boutton réserver, on remove la propriété hidden du container de snack pour afficher les snacks et on initialise les valeurs des billets à 0 
 reserverButton.addEventListener('click', function(){
   if (parseInt(inputValueAdulte.textContent) === 0 && parseInt(inputValueEnfant.textContent) === 0 && parseInt(inputValueEtudiant.textContent) === 0) {
     return;
@@ -86,6 +92,24 @@ reserverButton.addEventListener('click', function(){
     inputValueEnfant.textContent = "0";
     inputValueEtudiant.textContent = "0";
     snacksContainer.classList.remove('hidden');
+    filmContainer.classList.add('hidden');
+  }
+
+});
+
+// Même chose, sauf que dans ce cas c'est pour le boutton au responsive (2 bouttons différents car ils ont des emplacements différents)
+reserverButton2.addEventListener('click', function(){
+  console.log("test2")
+  if (parseInt(inputValueAdulte.textContent) === 0 && parseInt(inputValueEnfant.textContent) === 0 && parseInt(inputValueEtudiant.textContent) === 0) {
+    return;
+  }else{
+    inputValueAdulte.textContent = "0";
+    inputValueEnfant.textContent = "0";
+    inputValueEtudiant.textContent = "0";
+    snacksContainer.classList.remove('hidden');
+    filmContainer.classList.add('hidden');
+    billetsContainer.classList.add('hidden');
+
   }
 
 });

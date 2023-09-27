@@ -3,6 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carte</title>
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./src/css/output.css">
     <script defer src="./src/js/AnimationCarre.js"></script>
     <script src="./src/js/data.js"></script>
@@ -122,59 +130,27 @@
     </nav>
     <main class="px-6 lg:px-[96px] h-[200%] overflow-x-hidden overflow-scroll  pb-[200px] lg:mb-auto backdrop-blur-[100px] relative z-10 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHhtbG5zOnN2Z2pzPSJodHRwOi8vc3ZnanMuZGV2L3N2Z2pzIiB2aWV3Qm94PSIwIDAgNzAwIDcwMCIgd2lkdGg9IjcwMCIgaGVpZ2h0PSI3MDAiIG9wYWNpdHk9IjAuMjUiPjxkZWZzPjxmaWx0ZXIgaWQ9Im5ubm9pc2UtZmlsdGVyIiB4PSItMjAlIiB5PSItMjAlIiB3aWR0aD0iMTQwJSIgaGVpZ2h0PSIxNDAlIiBmaWx0ZXJVbml0cz0ib2JqZWN0Qm91bmRpbmdCb3giIHByaW1pdGl2ZVVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgY29sb3ItaW50ZXJwb2xhdGlvbi1maWx0ZXJzPSJsaW5lYXJSR0IiPgoJPGZlVHVyYnVsZW5jZSB0eXBlPSJmcmFjdGFsTm9pc2UiIGJhc2VGcmVxdWVuY3k9IjAuMTEyIiBudW1PY3RhdmVzPSI0IiBzZWVkPSIxNSIgc3RpdGNoVGlsZXM9InN0aXRjaCIgeD0iMCUiIHk9IjAlIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiByZXN1bHQ9InR1cmJ1bGVuY2UiPjwvZmVUdXJidWxlbmNlPgoJPGZlU3BlY3VsYXJMaWdodGluZyBzdXJmYWNlU2NhbGU9IjgiIHNwZWN1bGFyQ29uc3RhbnQ9IjAuNyIgc3BlY3VsYXJFeHBvbmVudD0iMjAiIGxpZ2h0aW5nLWNvbG9yPSIjZmZmZmZmIiB4PSIwJSIgeT0iMCUiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGluPSJ0dXJidWxlbmNlIiByZXN1bHQ9InNwZWN1bGFyTGlnaHRpbmciPgogICAgCQk8ZmVEaXN0YW50TGlnaHQgYXppbXV0aD0iMyIgZWxldmF0aW9uPSI4OCI+PC9mZURpc3RhbnRMaWdodD4KICAJPC9mZVNwZWN1bGFyTGlnaHRpbmc+CiAgCjwvZmlsdGVyPjwvZGVmcz48cmVjdCB3aWR0aD0iNzAwIiBoZWlnaHQ9IjcwMCIgZmlsbD0idHJhbnNwYXJlbnQiPjwvcmVjdD48cmVjdCB3aWR0aD0iNzAwIiBoZWlnaHQ9IjcwMCIgZmlsbD0iI2ZmZmZmZiIgZmlsdGVyPSJ1cmwoI25ubm9pc2UtZmlsdGVyKSI+PC9yZWN0Pjwvc3ZnPg==')]">
         <h1 class="text-blanc text-titre3 font-bold uppercase lg:text-titre1 mt-[104px] mb-10 lg:my-[104px] text-center scale-x-[192%] scale-y-[180%]" >Paiement</h1>
-        <div class="flex justify-between gap-[32px] lg:mt-[200px] flex-col" id="paiementContainer">
-            <div class="w-full text-vertfonce bg-blanc border-vert_fonce border-solid border-[4px] flex flex-col justify-between items-center rounded-[16px] " id="boutonCarte">
-                <i class="text-vertfonce text-[232px] bi bi-currency-dollar"></i>
-                <div class="h-[4px] bg-vert_fonce w-[80%]"></div>
-                <h1 class="text-vertfonce  text-titre2 font-bold lg:text-titre1">Comptoire</h1>
-            </div>
-
-            <div class=" w-full text-vertfonce bg-blanc border-vert_fonce border-solid border-[4px] flex-col justify-between items-center rounded-[16px] hidden lg:flex ">
-                <div class="my-[42px]">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="309" height="261" viewBox="0 0 309 261" fill="none">
-                        <path d="M191.656 77.0331C191.067 74.8436 191.358 72.5154 192.465 70.5606C193.572 68.6057 195.404 67.1844 197.558 66.6092L230.044 57.9348C232.198 57.3596 234.498 57.6778 236.437 58.8192C238.377 59.9607 239.797 61.832 240.386 64.0214L244.825 80.5319C245.414 82.7213 245.123 85.0495 244.016 87.0044C242.909 88.9592 241.077 90.3806 238.923 90.9557L206.437 99.6302C204.283 100.205 201.983 99.8872 200.044 98.7457C198.104 97.6042 196.684 95.733 196.095 93.5435L191.656 77.0331Z" fill="#81B26B"/>
-                        <path d="M32.1617 60.114C23.6319 62.3916 16.3594 67.9525 11.944 75.5735C7.52866 83.1945 6.33215 92.2513 8.61771 100.751L43.0885 228.95C45.3741 237.45 50.9545 244.698 58.6021 249.098C66.2497 253.498 75.3381 254.69 83.868 252.412L276.838 200.886C285.368 198.609 292.641 193.048 297.056 185.427C301.471 177.806 302.668 168.749 300.382 160.249L265.911 32.0498C263.626 23.5497 258.045 16.3025 250.398 11.9025C242.75 7.50251 233.662 6.31017 225.132 8.58777L32.1617 60.114ZM249.831 36.3437L271.375 116.468L46.2428 176.582L24.6986 96.4575C23.5558 92.2075 24.154 87.6791 26.3617 83.8686C28.5694 80.0581 32.2057 77.2776 36.4706 76.1388L229.441 24.6126C233.706 23.4738 238.25 24.07 242.074 26.27C245.898 28.47 248.688 32.0936 249.831 36.3437ZM272.529 184.861L79.5591 236.388C75.2942 237.526 70.75 236.93 66.9262 234.73C63.1024 232.53 60.3122 228.907 59.1694 224.656L54.8605 208.632L279.993 148.518L284.301 164.543C285.444 168.793 284.846 173.321 282.638 177.132C280.431 180.942 276.794 183.723 272.529 184.861Z" fill="#0E2802"/>
-                    </svg>
-                </div>
-
-                <div class="h-[4px] bg-vert_fonce w-[80%]"></div>
-                <h1 class="text-titre2 font-bold lg:text-titre1">Carte</h1>
-            </div>
-
-            <a href="carte.html" class="w-full text-vertfonce bg-blanc border-vert_fonce border-solid border-[4px] flex flex-col justify-between items-center rounded-[16px] lg:hidden ">
-                <div class="my-[42px]">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="309" height="261" viewBox="0 0 309 261" fill="none">
-                        <path d="M191.656 77.0331C191.067 74.8436 191.358 72.5154 192.465 70.5606C193.572 68.6057 195.404 67.1844 197.558 66.6092L230.044 57.9348C232.198 57.3596 234.498 57.6778 236.437 58.8192C238.377 59.9607 239.797 61.832 240.386 64.0214L244.825 80.5319C245.414 82.7213 245.123 85.0495 244.016 87.0044C242.909 88.9592 241.077 90.3806 238.923 90.9557L206.437 99.6302C204.283 100.205 201.983 99.8872 200.044 98.7457C198.104 97.6042 196.684 95.733 196.095 93.5435L191.656 77.0331Z" fill="#81B26B"/>
-                        <path d="M32.1617 60.114C23.6319 62.3916 16.3594 67.9525 11.944 75.5735C7.52866 83.1945 6.33215 92.2513 8.61771 100.751L43.0885 228.95C45.3741 237.45 50.9545 244.698 58.6021 249.098C66.2497 253.498 75.3381 254.69 83.868 252.412L276.838 200.886C285.368 198.609 292.641 193.048 297.056 185.427C301.471 177.806 302.668 168.749 300.382 160.249L265.911 32.0498C263.626 23.5497 258.045 16.3025 250.398 11.9025C242.75 7.50251 233.662 6.31017 225.132 8.58777L32.1617 60.114ZM249.831 36.3437L271.375 116.468L46.2428 176.582L24.6986 96.4575C23.5558 92.2075 24.154 87.6791 26.3617 83.8686C28.5694 80.0581 32.2057 77.2776 36.4706 76.1388L229.441 24.6126C233.706 23.4738 238.25 24.07 242.074 26.27C245.898 28.47 248.688 32.0936 249.831 36.3437ZM272.529 184.861L79.5591 236.388C75.2942 237.526 70.75 236.93 66.9262 234.73C63.1024 232.53 60.3122 228.907 59.1694 224.656L54.8605 208.632L279.993 148.518L284.301 164.543C285.444 168.793 284.846 173.321 282.638 177.132C280.431 180.942 276.794 183.723 272.529 184.861Z" fill="#0E2802"/>
-                    </svg>
-                </div>
-
-                <div class="h-[4px] bg-vert_fonce w-[80%]"></div>
-                <h1 class="text-titre2 font-bold lg:text-titre1">Carte</h1>
-            </a>
-
-        </div>
-        <div class="bg-blanc lg:hidden p-3 flex flex-col gap-5 border-solid border-[4px] border-noir rounded-[16px] hidden">
+        <div class="bg-blanc  p-3 flex flex-col gap-5 border-solid border-[4px] border-noir rounded-[16px] " id="paiementContainer">
             <div class="border-b-noir border-b-[2px] flex justify-between items-center">
                 <h1 class="text-[20px] font-bold">Montant total</h1>
                 <p class="text-[16px] font-bold" x-text="((calculateTotalNoTaxes() * 1.05) + (calculateTotalNoTaxes() * 0.09)).toFixed(2) + ' $'"></p> 
             </div>
             <div>
                 <label for="titulaire" class="font-semibold">Titulaire de la carte</label>
-                <input type="text" class="w-full bg-[#81B26B] rounded-[10px] border-black border-2 h-[35px]"></input>
+                <input type="text" class="w-full bg-[#81B26B] rounded-[10px] border-black border-2 h-[35px]" required ></input>
             </div>
             <div>
                 <label for="numero" class="font-semibold">Numéro de carte</label>
-                <input type="number" class="w-full bg-[#81B26B] rounded-[10px] border-black border-2 h-[35px]"></input>
+                <input type="number" class="w-full bg-[#81B26B] rounded-[10px] border-black border-2 h-[35px]" required ></input>
             </div>
             <div class="flex border-b-noir border-b-[2px] pb-5 gap-8">
                 <div>
                     <label for="date" class="font-semibold">Date d'expiration</label>
-                    <input type="text" class="w-full bg-[#81B26B] rounded-[10px] border-black border-2 h-[35px]"></input>
+                    <input type="text" class="w-full bg-[#81B26B] rounded-[10px] border-black border-2 h-[35px]" required ></input>
                 </div>
                 <div class="">
                     <label for="date" class="font-semibold">Cryptogramme</label>
-                    <input type="text" class="w-full bg-[#81B26B] rounded-[10px] border-black border-2 h-[35px]"></input>
+                    <input type="text" class="w-full bg-[#81B26B] rounded-[10px] border-black border-2 h-[35px]" required ></input>
                 </div>
             </div>
             <h2 class="font-bold">Nouveau !</h2>
@@ -187,15 +163,17 @@
                 </label>
                 <input type="text" class="w-full bg-[#81B26B] rounded-[10px] border-black border-2 h-[35px]"></input>
             </div>
-            <button class="border-black border-[3px] rounded-[10px] h-[35px] w-32 mx-auto font-bold text-[20px]" >Payer</button>
+            <button class="border-black border-[3px] rounded-[10px] h-[35px] w-32 mx-auto font-bold text-[20px]" id="boutonCarte" >Payer</button>
         </div>
         <div class="chargement flex flex-col items-center text-blanc hidden">
             <i class="text-[150px] lg:text-[360px] bi bi-ticket-perforated-fill"></i>
-            <h1 class="text-titre4  font-bold lg:text-titre1 text-center">
+            <h1 class="text-titre4 font-bold  lg:text-titre1 text-center">
                 Traitement en cours ...
             </h1>
         </div>
 
     </main>
+</body>
+</html>
 </body>
 </html>

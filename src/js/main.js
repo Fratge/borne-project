@@ -1,4 +1,6 @@
 const app = () => {
+
+    // Initialisation du panier depuis le local storage ou un tableau vide si inexistant
     let initialPanier = JSON.parse(localStorage.getItem("panierUser")) || [];
 
     return {
@@ -12,13 +14,13 @@ const app = () => {
         panierUser: initialPanier,
         selectedFilm: JSON.parse(localStorage.getItem('selectedFilm')),
 
-
+        // Redirige l'utilisateur vers les détails du film choisi
         redirectToFilmDetails(film){
             localStorage.setItem('selectedFilm', JSON.stringify(film));
             window.location.href = 'filmDetails.html';
         },
 
-
+        // Ajoute le film sélectionné au panier de l'utilisateur
         addToPanier() {
             const existingItemIndex = this.panierUser.findIndex(item => item.filmName === this.selectedFilm.filmName);
         
@@ -39,22 +41,25 @@ const app = () => {
             this.setPanierUser();
         },
         
-
+        // Réinitialise la quantité d'un article spécifique à 0
         resetQuantity(item, quantityType) {
             item[quantityType] = 0;
             this.setPanierUser();
         },
 
+        // Réinitialise l'ensemble du panier
         resetPanier(){
             this.panierUser = []; 
             this.setPanierUser();
         },
 
+        // Sauvegarde le panier actuel de l'utilisateur dans le local storage (suite à un changement)
         setPanierUser() {
             localStorage.setItem("panierUser", JSON.stringify(this.panierUser));
             console.log(this.panierUser)
         },
 
+        // Calcule le total du panier sans taxes
         calculateTotalNoTaxes() {
             let total = 0;
         
@@ -75,7 +80,7 @@ const app = () => {
             return total.toFixed(2);
         },
         
-
+        // Récupère le prix d'un film spécifique en fonction du type de ticket
         getFilmPrice(filmName, priceType) {
             const film = this.filmsList.find(f => f.filmName === filmName);
             if (film) {
@@ -84,6 +89,7 @@ const app = () => {
             return 0;
         },
 
+        // Vérifie si le panier est vide
         checkIfPanierVide() {
             for (const item of this.panierUser) {
                 if (item.adulteQuantity >= 1 || item.etudiantQuantity >= 1 || item.enfantQuantity >= 1 || item.snackQuantity >= 1) {
@@ -93,10 +99,12 @@ const app = () => {
             return true;
         },
 
+        // Bascule entre le format large et le format régulier pour un snack (pour le boutton Large & Small)
         background(snack){
             snack.largeBool = !snack.largeBool;
         },
 
+        // Ajoute un snack au panier de l'utilisateur
         addToPanierSnack(snack) {
             let snackPrice = snack.largeFormat;
         
@@ -126,6 +134,7 @@ const app = () => {
             console.log(this.panierUser);
         },
 
+        // Récupère le prix d'un snack spécifique
         getSnackPrice(snack){
             if (snack.largeBool === false) {
                 console.log(snack.smallFormat);
@@ -134,6 +143,7 @@ const app = () => {
             return snack.largeFormat
         },
 
+        // Diminue la quantité d'un snack dans le panier de l'utilisateur
         decrementSnackQuantity(snack) {
             const existingItemIndex = this.panierUser.findIndex(item => 
                 item.snackName === snack.snackName && item.largeBool === snack.largeBool
@@ -151,7 +161,9 @@ const app = () => {
             this.setPanierUser();
         },
 
+        // Augmente la quantité d'un snack dans le panier de l'utilisateur
         incrementSnackQuantity(snack) {
+
             const existingItemIndex = this.panierUser.findIndex(item => 
                 item.snackName === snack.snackName && item.largeBool === snack.largeBool
             );
@@ -173,10 +185,12 @@ const app = () => {
         
                 this.panierUser.push(newItem);
             }
-        
+            console.log("After increment:", this.panierUser[existingItemIndex].snackQuantity);
+
             this.setPanierUser();
         },
         
+        // Augmente la quantité d'un type de ticket spécifique pour un film
         incrementFilmQuantity(film, ticketType) {
             const existingItemIndex = this.panierUser.findIndex(item => item.filmName === film.filmName);
         
@@ -196,7 +210,7 @@ const app = () => {
             this.setPanierUser();
         },
         
-        
+        // Diminue la quantité d'un type de ticket spécifique pour un film
         decrementFilmQuantity(film, ticketType) {
             const existingItemIndex = this.panierUser.findIndex(item => item.filmName === film.filmName);
         
@@ -213,6 +227,7 @@ const app = () => {
             this.setPanierUser();
         },
         
+        // Redirige la page d'accueil
         redirectAccueil(){
             window.location.href='./accueil.html'
         }
